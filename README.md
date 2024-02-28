@@ -1,5 +1,19 @@
 # game-demo-1
 
+
+## Objectives for this project
+
+### Set up player character + grid movement
+### Set up tilemap of PortTown
+### Set up NPC + pathing + dialogue
+### Set up Enemy + pathing + combat
+### Title screen
+### Menu
+### Pause
+### Map transition
+### Saving
+### Music
+
 Not sure if Project Settings are also shared. If not, have to set that up manually. 
 
 ## Godot Editor Setup
