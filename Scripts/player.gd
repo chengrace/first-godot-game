@@ -55,8 +55,7 @@ func player_animations(direction: Vector2):
 		animation = "walk_" + returned_direction(new_direction)
 		animation_sprite.play(animation)
 	else:
-		#animation = "idle_" + returned_direction(new_direction)
-		animation = "idle"
+		animation = "idle_" + returned_direction(new_direction)
 		animation_sprite.play(animation)
 
 func returned_direction(direction: Vector2):
@@ -64,32 +63,35 @@ func returned_direction(direction: Vector2):
 	var default_return = "side"
 	
 	#print(normalized_direction)
-	
-	if normalized_direction.y >= 1:
+	if Input.is_action_pressed("ui_left"):
+		animation_sprite.flip_h = false
+	elif Input.is_action_pressed("ui_right"):
+		animation_sprite.flip_h = true
+	elif normalized_direction.y > 0:
 		# vector is (0, 1)
 		return "down"
 		
-	elif normalized_direction.y <= -1:
+	elif normalized_direction.y < 0:
 		# vector is (0,-1)
 		return "up"
-	elif normalized_direction.x >= 1:
+	elif normalized_direction.x > 0:
 		#left
 		# vector is (-1,0)
 		animation_sprite.flip_h = false
 		return "side"
-	elif normalized_direction.x <= -1:
+	elif normalized_direction.x < 0:
 		#right
 		# vector is (1,0)
 		animation_sprite.flip_h = true
 		return "side"
-	else:
-		if Input.is_action_pressed("ui_left"):
-			animation_sprite.flip_h = true
-		elif Input.is_action_pressed("ui_right"):
-			animation_sprite.flip_h = false
+	#else:
+		#if Input.is_action_pressed("ui_left"):
+			#animation_sprite.flip_h = false
+		#elif Input.is_action_pressed("ui_right"):
+			#animation_sprite.flip_h = true
 			
 		
-		return default_return
+	return default_return
 
 
 func _on_animated_sprite_2d_animation_finished():
