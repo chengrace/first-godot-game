@@ -3,16 +3,16 @@
 
 ## Objectives for this project
 
-### Set up player character + grid movement
-### Set up tilemap of PortTown
-### Set up NPC + pathing + dialogue
-### Set up Enemy + pathing + combat
-### Title screen
-### Menu
-### Pause
-### Map transition
-### Saving
-### Music
+#### Set up player character + grid movement
+#### Set up tilemap of PortTown
+#### Set up NPC + pathing + dialogue
+#### Set up Enemy + pathing + combat
+#### Title screen
+#### Menu
+#### Pause
+#### Map transition
+#### Saving
+#### Music
 
 ## Project Troubleshooting
 
