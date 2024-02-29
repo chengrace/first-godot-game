@@ -14,7 +14,6 @@ func move(direction: Vector2) -> void:
 		elif direction.x < 0: movement = Vector2.LEFT
 		
 		moving_direction = movement
-		print(self_node)
 		var new_position = self_node.global_position + (moving_direction * Constants.TILE_SIZE)
 		
 		var tween = create_tween()
