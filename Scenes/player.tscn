@@ -170,3 +170,5 @@ animation = &"walk_side"
 script = ExtResource("3_0eh4l")
 
 [node name="GridMovement" parent="." instance=ExtResource("3_s3rd3")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
