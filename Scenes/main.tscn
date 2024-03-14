@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://wimqq5xrrgox"]
+[gd_scene load_steps=11 format=3 uid="uid://wimqq5xrrgox"]
 
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/grass and rock.png" id="2_5u1fk"]
 [ext_resource type="Texture2D" uid="uid://db5yopqg12ek7" path="res://Assets/house1trial.png" id="2_43p0u"]
 [ext_resource type="Script" path="res://Scripts/follow_cam.gd" id="4_may0i"]
 [ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/player.tscn" id="4_npeac"]
+[ext_resource type="PackedScene" uid="uid://ds4apf8k0rus7" path="res://Scenes/enemy.tscn" id="5_eau3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xspkg"]
 texture = ExtResource("2_5u1fk")
@@ -334,3 +335,6 @@ position = Vector2(216, 208)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="Enemy" parent="." instance=ExtResource("5_eau3j")]
+position = Vector2(88, 128)
