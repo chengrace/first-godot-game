@@ -8,3 +8,4 @@ script = ExtResource("1_6csh7")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
 target_position = Vector2(0, 16)
+collide_with_areas = true

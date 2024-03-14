@@ -1,7 +1,9 @@
+## grid_movement.gd
+
 extends Node2D
  
 @export var self_node: Node2D
-@export var speed: float = 0.25
+@export var speed: float = 0.3
  
 var moving_direction: Vector2 = Vector2.ZERO
  
@@ -20,7 +22,7 @@ func move(direction: Vector2) -> void:
 		$RayCast2D.target_position = movement * Constants.TILE_SIZE
 		$RayCast2D.force_raycast_update() # Update the `target_position` immediately
 		
-		# Allow movement only if no collision in next tile
+		# Allow movement only if no collision in next tile or if the collider is just its own node:
 		if !$RayCast2D.is_colliding():
 			moving_direction = movement
 			

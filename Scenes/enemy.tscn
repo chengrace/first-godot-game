@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ds4apf8k0rus7"]
+[gd_scene load_steps=11 format=3 uid="uid://ds4apf8k0rus7"]
 
 [ext_resource type="Texture2D" uid="uid://e834udfo8n2w" path="res://Assets/angybee-Sheet.png" id="1_byqdg"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="2_1pv8t"]
+[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="3_hnqcx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rbit6"]
 atlas = ExtResource("1_byqdg")
@@ -45,7 +47,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7but"]
+radius = 96.3328
+
+[node name="Enemy" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_eri4f")
 animation = &"walk_side"
-frame_progress = 0.088634
+frame_progress = 0.879335
+script = ExtResource("2_1pv8t")
+
+[node name="GridMovement" parent="." instance=ExtResource("3_hnqcx")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_w7but")
