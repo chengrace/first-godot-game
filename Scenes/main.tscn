@@ -274,7 +274,7 @@ sources/0 = SubResource("TileSetAtlasSource_xspkg")
 sources/1 = SubResource("TileSetAtlasSource_xyjl1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jihg"]
-size = Vector2(645, 20)
+size = Vector2(642.5, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wau6h"]
 size = Vector2(14.5, 393.078)
@@ -314,7 +314,7 @@ tilemap = NodePath("../TileMap")
 [node name="StaticBody2D" type="StaticBody2D" parent="Invisible Walls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Walls/StaticBody2D"]
-position = Vector2(312, -8)
+position = Vector2(310.75, 7)
 shape = SubResource("RectangleShape2D_1jihg")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Invisible Walls"]
