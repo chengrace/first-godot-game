@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://ds4apf8k0rus7"]
+
+[ext_resource type="Texture2D" uid="uid://e834udfo8n2w" path="res://Assets/angybee-Sheet.png" id="1_byqdg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbit6"]
+atlas = ExtResource("1_byqdg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pynfm"]
+atlas = ExtResource("1_byqdg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkj2g"]
+atlas = ExtResource("1_byqdg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jvbt"]
+atlas = ExtResource("1_byqdg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2ft4"]
+atlas = ExtResource("1_byqdg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eri4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbit6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pynfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkj2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jvbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2ft4")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_eri4f")
+animation = &"walk_side"
+frame_progress = 0.088634
