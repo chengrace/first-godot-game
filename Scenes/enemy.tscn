@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds4apf8k0rus7"]
+[gd_scene load_steps=13 format=3 uid="uid://ds4apf8k0rus7"]
 
 [ext_resource type="Texture2D" uid="uid://e834udfo8n2w" path="res://Assets/angybee-Sheet.png" id="1_byqdg"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="2_1pv8t"]
@@ -50,11 +50,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhsns"]
 radius = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_eftu7"]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7but"]
 radius = 96.3328
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("2_1pv8t")
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_hnqcx")]
+self_node = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r6uht")
@@ -63,19 +71,28 @@ animation = &"walk_side"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yhsns")
 
-[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_hnqcx")]
-self_node = NodePath("..")
-
-[node name="Area2D" type="Area2D" parent="."]
+[node name="TriggerBattleRadius" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBattleRadius"]
+shape = SubResource("CircleShape2D_eftu7")
+
+[node name="EnemyRadius" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRadius"]
 shape = SubResource("CircleShape2D_w7but")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="StartWalkingTimer" type="Timer" parent="."]
+wait_time = 4.0
 autostart = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="StopWalkingTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="body_entered" from="TriggerBattleRadius" to="." method="_on_trigger_battle_radius_body_entered"]
+[connection signal="body_entered" from="EnemyRadius" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="EnemyRadius" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="StartWalkingTimer" to="." method="_on_start_walking_timer_timeout"]
+[connection signal="timeout" from="StopWalkingTimer" to="." method="_on_stop_timer_timeout"]

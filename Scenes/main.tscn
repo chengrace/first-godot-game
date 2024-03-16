@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wimqq5xrrgox"]
+[gd_scene load_steps=12 format=3 uid="uid://wimqq5xrrgox"]
 
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/grass and rock.png" id="2_5u1fk"]
 [ext_resource type="Texture2D" uid="uid://db5yopqg12ek7" path="res://Assets/house1trial.png" id="2_43p0u"]
@@ -280,6 +280,12 @@ size = Vector2(642.5, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wau6h"]
 size = Vector2(14.5, 393.078)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wan8i"]
+vertices = PackedVector2Array(50, 58, 133, 58, 130, 62, 88, 72, 50, 134, 78, 120, 85, 174, 57, 174)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 48, 152, 48, 136, 72, 96, 80, 88, 120, 96, 184, 48, 184, 40, 136, 40, 104, 40, 88)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -331,10 +337,17 @@ position = Vector2(632, 181)
 shape = SubResource("RectangleShape2D_wau6h")
 
 [node name="Player" parent="." instance=ExtResource("4_npeac")]
+unique_name_in_owner = true
 position = Vector2(216, 208)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="EnemyPath" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wan8i")
+
 [node name="Enemy" parent="." instance=ExtResource("5_eau3j")]
-position = Vector2(88, 128)
+position = Vector2(64, 80)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+debug_enabled = true

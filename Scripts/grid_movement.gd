@@ -23,7 +23,8 @@ func move(direction: Vector2) -> void:
 		$RayCast2D.force_raycast_update() # Update the `target_position` immediately
 		
 		# Allow movement only if no collision in next tile or if the collider is just its own node:
-		if !$RayCast2D.is_colliding():
+		var collision = $RayCast2D.get_collider()
+		if collision == null or collision.is_in_group("player"):
 			moving_direction = movement
 			
 			var new_position = self_node.global_position + (moving_direction * Constants.TILE_SIZE)

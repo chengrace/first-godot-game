@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1rw8y"]
 [ext_resource type="Texture2D" uid="uid://grudbxksw8de" path="res://Assets/sprite_with_idle.png" id="1_orjdi"]
-[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="3_nj0f6"]
+[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="3_7lacg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy4s"]
 
@@ -188,7 +188,11 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_1rw8y")
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_7lacg")]
+self_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hyy4s")
@@ -196,6 +200,3 @@ shape = SubResource("CapsuleShape2D_hyy4s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a30o3")
 animation = &"walk_up"
-
-[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_nj0f6")]
-self_node = NodePath("..")
