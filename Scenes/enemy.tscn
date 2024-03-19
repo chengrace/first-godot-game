@@ -160,10 +160,10 @@ shape = SubResource("CircleShape2D_w7but")
 
 [node name="StartWalkingTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [node name="StopWalkingTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
+autostart = true
 
 [connection signal="body_entered" from="TriggerBattleRadius" to="." method="_on_trigger_battle_radius_body_entered"]
 [connection signal="body_entered" from="EnemyRadius" to="." method="_on_area_2d_body_entered"]
