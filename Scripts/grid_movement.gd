@@ -10,6 +10,23 @@ var moving_direction: Vector2 = Vector2.ZERO
 func _ready():
 	# Set movement direction as DOWN by default
 	$RayCast2D.target_position = Vector2.DOWN * Constants.TILE_SIZE
+
+# Use when vector isn't clearly one direction. 
+func fix_vector(vec: Vector2):
+	if abs(vec.x) > abs(vec.y):
+		if vec.x < 0:
+			vec.x = -1
+		else:
+			vec.x = 1
+		vec.y = 0
+	if abs(vec.y) >= abs(vec.x):
+		if vec.y < 0:
+			vec.y = -1
+		else:
+			vec.y = 1
+		vec.x = 0 
+		#prioritize up and down over left and right movement
+	return vec
  
 func move(direction: Vector2) -> void:
 	if moving_direction.length() == 0 && direction.length() > 0:
