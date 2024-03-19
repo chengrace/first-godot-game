@@ -7,9 +7,11 @@
 done!
 #### Set up tilemap of PortTown
 #### Set up NPC + pathing + dialogue
-#### Set up Enemy + pathing + combat
+#### Set up Enemy + pathing
+done!
+#### Set up turn-based combat
 #### Title screen
-#### Menu
+#### Main Menu
 #### Pause
 #### Map transition
 #### Saving
