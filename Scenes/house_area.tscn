@@ -316,9 +316,10 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
 offset_right = 640.0
 offset_bottom = 384.0
-color = Color(1, 1, 1, 0)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_sgerp")
