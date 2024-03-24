@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wimqq5xrrgox"]
+[gd_scene load_steps=16 format=3 uid="uid://wimqq5xrrgox"]
 
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/grass and rock.png" id="1_1husp"]
 [ext_resource type="Script" path="res://Scripts/house_area.gd" id="1_n5et7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/follow_cam.gd" id="3_y4fk6"]
 [ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/player.tscn" id="4_navqn"]
 [ext_resource type="PackedScene" uid="uid://ds4apf8k0rus7" path="res://Scenes/enemy.tscn" id="5_vpjqb"]
+[ext_resource type="PackedScene" uid="uid://dqti668w3tj0f" path="res://Scenes/save_point.tscn" id="7_37b5s"]
 
 [sub_resource type="Animation" id="Animation_bjp4a"]
 resource_name = "fade_in"
@@ -396,3 +397,6 @@ position = Vector2(48, 37)
 unique_name_in_owner = true
 position = Vector2(-40, -29)
 curve = SubResource("Curve2D_wsxdy")
+
+[node name="SavePoint" parent="." instance=ExtResource("7_37b5s")]
+position = Vector2(360, 312)

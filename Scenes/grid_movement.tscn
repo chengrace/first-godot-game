@@ -8,4 +8,4 @@ script = ExtResource("1_eddk6")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
 target_position = Vector2(0, 16)
-collision_mask = 3
+collision_mask = 5

@@ -44,3 +44,11 @@ func vector2Direction(vec: Vector2) -> String:
 		direction = "side" #facing left
 		
 	return direction
+
+func data_to_save():
+	return {
+		"position": [position.x, position.y]
+	}
+
+func _on_save_pressed():
+	Global.save()
