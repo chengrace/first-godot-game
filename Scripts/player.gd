@@ -15,8 +15,7 @@ func _input(event):
 		# Save game action
 		var collision = ray_cast.get_collider()
 		if collision != null and collision.name == "SavePoint":
-			#Global.save()
-			print("save game")
+			Global.save()
  
 func _process(_delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -58,6 +57,9 @@ func data_to_save():
 	return {
 		"position": [position.x, position.y]
 	}
+	
+func data_to_load(data):
+	position = Vector2(data.position[0], data.position[1])
 
 func _on_save_pressed():
 	Global.save()
