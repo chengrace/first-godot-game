@@ -40,6 +40,12 @@ ui_action={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="overworld"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

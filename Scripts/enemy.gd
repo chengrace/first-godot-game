@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var enemy_nav: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var grid = $GridMovement
+@onready var ray_cast = $GridMovement/RayCast2D
 @onready var start_walk_timer = $StartWalkingTimer
 @onready var stop_walk_timer = $StopWalkingTimer
 @onready var bee_path = %BeePath
@@ -22,13 +23,18 @@ func _ready():
 	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
 	animated_sprite.play("idle_down")
 	next_pos = next_point_on_path(bee_path) # initalizes first point on the path to follow
+	
+	# changes collision masks for enemy
+	ray_cast.set_collision_mask_value(1, true)
+	ray_cast.set_collision_mask_value(2, true)
+	ray_cast.set_collision_mask_value(3, false)
  
 func _process(_delta):
 	if is_following:
 	# follow player if close enough
 		start_walk_timer.paused = true
 		stop_walk_timer.paused = true
-		grid.speed = 0.3
+		grid.speed = 0.25
 		direction = global_position.direction_to(%Player.global_position)
 	else:
 	# enemy pathing with idle timing
