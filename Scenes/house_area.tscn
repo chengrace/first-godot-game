@@ -399,4 +399,4 @@ position = Vector2(-40, -29)
 curve = SubResource("Curve2D_wsxdy")
 
 [node name="SavePoint" parent="." instance=ExtResource("7_37b5s")]
-position = Vector2(360, 312)
+position = Vector2(496, 336)
