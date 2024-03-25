@@ -2,6 +2,7 @@
 
 
 ## Objectives for first greybox
+##### Started Feb 28, 2024
 1. Set up player character + grid movement
 2. Set up tilemap of first spawned area
 3. Set up NPC + pathing + dialogue
