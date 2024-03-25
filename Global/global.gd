@@ -7,6 +7,7 @@ signal scene_changed(new_scene)
 var save_path = "/Users/gracechen/desktop/phone_game_save.json" # you will need to manually change this line for your own PC 
 var current_scene_name
 var loading = false
+var encryption_password = "pass"
 
 #set current scene on load
 func _ready():
@@ -29,6 +30,7 @@ func save():
 		var json = JSON.new()
 		var to_json = json.stringify(data)
 		# opens save file for writing
+		# var file = FileAccess.open_encrypted_with_pass(save_path, FileAccess.WRITE, encryption_password)
 		var file = FileAccess.open(save_path, FileAccess.WRITE)
 		# writes to save file
 		file.store_line(to_json)
