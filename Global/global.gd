@@ -38,19 +38,6 @@ func save():
 		file.close()
 	else:
 		print("No active scene. Cannot save.")
-
-func change_scene(scene_path):
-	save()
-	# Get the current scene
-	current_scene_name = scene_path.get_file().get_basename()
-	var current_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
-	# Free it for the new scene
-	current_scene.queue_free()
-	# Change the scene
-	var new_scene = load(scene_path).instantiate()
-	get_tree().get_root().call_deferred("add_child", new_scene) 
-	get_tree().call_deferred("set_current_scene", new_scene)    
-	call_deferred("post_scene_change_initialization")
 	
 func load_game():
 	if loading and FileAccess.file_exists(save_path):
@@ -76,6 +63,18 @@ func load_game():
 		print("Save file not found!")
 	loading = false
 	
-
+func change_scene(scene_path):
+	save()
+	# Get the current scene
+	current_scene_name = scene_path.get_file().get_basename()
+	var current_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
+	# Free it for the new scene
+	current_scene.queue_free()
+	# Change the scene
+	var new_scene = load(scene_path).instantiate()
+	get_tree().get_root().call_deferred("add_child", new_scene) 
+	get_tree().call_deferred("set_current_scene", new_scene)    
+	call_deferred("post_scene_change_initialization")
+	
 func post_scene_change_initialization():
 	scene_changed.emit()

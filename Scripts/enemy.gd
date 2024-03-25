@@ -2,7 +2,6 @@
 
 extends CharacterBody2D
 
-@onready var enemy_nav: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var grid = $GridMovement
 @onready var ray_cast = $GridMovement/RayCast2D
