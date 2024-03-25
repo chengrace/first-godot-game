@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="3_7lacg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy4s"]
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2e1m"]
 atlas = ExtResource("1_orjdi")
@@ -199,4 +200,5 @@ shape = SubResource("CapsuleShape2D_hyy4s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a30o3")
-animation = &"walk_up"
+animation = &"idle_down"
+frame_progress = 0.800396

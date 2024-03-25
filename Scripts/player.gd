@@ -3,11 +3,19 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var ray_cast = $GridMovement/RayCast2D
  
 func _ready():
 	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
 	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
 	animated_sprite.play("idle_down")
+	
+func _input(event):
+	if event.is_action_pressed("ui_action"):
+		# Save game action
+		var collision = ray_cast.get_collider()
+		if collision != null and collision.name == "SavePoint":
+			Global.save()
  
 func _process(_delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -44,3 +52,14 @@ func vector2Direction(vec: Vector2) -> String:
 		direction = "side" #facing left
 		
 	return direction
+
+func data_to_save():
+	return {
+		"position": [position.x, position.y]
+	}
+	
+func data_to_load(data):
+	position = Vector2(data.position[0], data.position[1])
+
+func _on_save_pressed():
+	Global.save()
