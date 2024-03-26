@@ -8,7 +8,10 @@ func _ready():
 	animation_player.play("fade_in")
 
 func _on_exit_area_body_entered(body):
-	if body.is_in_group("Player"):
+	print("entered")
+	print(body.name)
+	if body.is_in_group("player"):
+		print("player entered")
 		Global.change_scene("res://Scenes/new_area.tscn")
 		Global.scene_changed.connect(_on_scene_changed)
 

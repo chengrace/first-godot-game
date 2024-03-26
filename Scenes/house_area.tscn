@@ -401,14 +401,15 @@ position = Vector2(224, 184)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="SavePoint" parent="." instance=ExtResource("7_37b5s")]
-position = Vector2(320, 224)
-
 [node name="ExitArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
 position = Vector2(456, 360)
 shape = SubResource("RectangleShape2D_kvya3")
+
+[node name="SavePoint" parent="." instance=ExtResource("7_37b5s")]
+position = Vector2(280, 296)
+gravity_scale = 1.66533e-16
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="Player" method="_on_exit_area_body_entered"]
