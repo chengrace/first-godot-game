@@ -321,7 +321,7 @@ _data = {
 point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvya3"]
-size = Vector2(50, 20)
+size = Vector2(50, 18)
 
 [node name="HouseArea" type="Node2D"]
 script = ExtResource("1_n5et7")
@@ -370,7 +370,7 @@ shape = SubResource("RectangleShape2D_1jihg")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Invisible Walls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Walls/StaticBody2D2"]
-position = Vector2(317.5, 376)
+position = Vector2(320, 376)
 shape = SubResource("RectangleShape2D_1jihg")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Invisible Walls"]
@@ -402,14 +402,15 @@ position = Vector2(224, 184)
 remote_path = NodePath("../../Camera2D")
 
 [node name="ExitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
-position = Vector2(456, 360)
+position = Vector2(456, 368)
 shape = SubResource("RectangleShape2D_kvya3")
 
 [node name="SavePoint" parent="." instance=ExtResource("7_37b5s")]
 position = Vector2(280, 296)
-gravity_scale = 1.66533e-16
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="Player" method="_on_exit_area_body_entered"]

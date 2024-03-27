@@ -194,6 +194,7 @@ script = ExtResource("1_1rw8y")
 
 [node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("3_7lacg")]
 self_node = NodePath("..")
+speed = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hyy4s")

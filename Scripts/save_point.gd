@@ -1,5 +1,5 @@
 # save_point.gd
-extends RigidBody2D
+extends StaticBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 

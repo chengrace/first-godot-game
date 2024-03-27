@@ -19,8 +19,9 @@ func save():
 	if current_scene != null:
 		current_scene_name = current_scene.name
 		var data = { 
-			"scene_name" : current_scene_name,
-			"scene_filename": current_scene.scene_file_path.get_file()
+			"scene_name": current_scene_name,
+			"scene_filename": current_scene.scene_file_path.get_file(),
+			"timestamp": Time.get_time_dict_from_system()
 		}
 		if current_scene.has_node("Player"):
 			var player = get_tree().get_root().get_node("%s/Player" % current_scene_name)
@@ -47,7 +48,7 @@ func load_game():
 		file.close()
 		# Load the saved scene
 		var scene_path = "res://Scenes/%s" % data["scene_filename"]
-		print("Scene_path:", scene_path)
+		#print("Scene_path:", scene_path)
 		var game_resource = load(scene_path)
 		var game = game_resource.instantiate()
 		# Change to the loaded scene
@@ -64,7 +65,7 @@ func load_game():
 	loading = false
 	
 func change_scene(scene_path):
-	save()
+	#save()
 	# Get the current scene
 	current_scene_name = scene_path.get_file().get_basename()
 	var current_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)

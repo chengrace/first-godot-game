@@ -65,4 +65,8 @@ func _on_save_pressed():
 	Global.save()
 
 func _on_exit_area_body_entered(body):
-	pass # Replace with function body.
+	Global.scene_changed.connect(_on_scene_changed)
+
+#only after scene has been changed, do we free our resource     
+func _on_scene_changed():
+	queue_free()
