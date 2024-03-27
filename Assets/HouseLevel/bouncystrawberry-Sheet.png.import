@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d28qv50vn4i77"
-path="res://.godot/imported/bouncystrawberry-Sheet.png-26b4645a38df6d35f88ad7cecb1f5203.ctex"
+path="res://.godot/imported/bouncystrawberry-Sheet.png-c5375b9dce44c54e551b2fd9e55f6886.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bouncystrawberry-Sheet.png"
-dest_files=["res://.godot/imported/bouncystrawberry-Sheet.png-26b4645a38df6d35f88ad7cecb1f5203.ctex"]
+source_file="res://Assets/HouseLevel/bouncystrawberry-Sheet.png"
+dest_files=["res://.godot/imported/bouncystrawberry-Sheet.png-c5375b9dce44c54e551b2fd9e55f6886.ctex"]
 
 [params]
 

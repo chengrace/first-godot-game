@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://3xviq2qybfjk"]
+[gd_scene load_steps=5 format=3 uid="uid://3xviq2qybfjk"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_m7338"]
+[ext_resource type="AudioStream" uid="uid://cfn7qpvpvs37c" path="res://Assets/Music/inside the mountain.wav" id="2_pnmwf"]
 
 [sub_resource type="Animation" id="Animation_nlh20"]
 resource_name = "fade_out"
@@ -114,6 +115,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit Game
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pnmwf")
+autoplay = true
 
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
 [connection signal="pressed" from="Background/NewGame" to="." method="_on_new_game_pressed"]
