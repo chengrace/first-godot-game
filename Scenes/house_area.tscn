@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://wimqq5xrrgox"]
+[gd_scene load_steps=19 format=3 uid="uid://wimqq5xrrgox"]
 
-[ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/grass and rock.png" id="1_1husp"]
+[ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/HouseLevel/grass and rock.png" id="1_1husp"]
 [ext_resource type="Script" path="res://Scripts/house_area.gd" id="1_n5et7"]
-[ext_resource type="Texture2D" uid="uid://db5yopqg12ek7" path="res://Assets/house1trial.png" id="2_ss2vs"]
+[ext_resource type="Texture2D" uid="uid://db5yopqg12ek7" path="res://Assets/HouseLevel/house1trial.png" id="2_ss2vs"]
 [ext_resource type="Script" path="res://Scripts/follow_cam.gd" id="3_y4fk6"]
 [ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/player.tscn" id="4_navqn"]
 [ext_resource type="PackedScene" uid="uid://ds4apf8k0rus7" path="res://Scenes/enemy.tscn" id="5_vpjqb"]
 [ext_resource type="PackedScene" uid="uid://dqti668w3tj0f" path="res://Scenes/save_point.tscn" id="7_37b5s"]
+[ext_resource type="AudioStream" uid="uid://fpw0qtl5wxye" path="res://Assets/Music/the natives.wav" id="8_pfp0d"]
 
 [sub_resource type="Animation" id="Animation_bjp4a"]
 resource_name = "fade_in"
@@ -320,11 +321,18 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok8qy"]
+size = Vector2(20, 26)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvya3"]
 size = Vector2(50, 18)
 
 [node name="HouseArea" type="Node2D"]
 script = ExtResource("1_n5et7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pfp0d")
+autoplay = true
 
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {
@@ -401,6 +409,16 @@ position = Vector2(224, 184)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="SavePoint" parent="." instance=ExtResource("7_37b5s")]
+position = Vector2(280, 296)
+
+[node name="EnterHouse" type="Area2D" parent="."]
+position = Vector2(416, 184)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterHouse"]
+position = Vector2(8, -3)
+shape = SubResource("RectangleShape2D_ok8qy")
+
 [node name="ExitArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -408,9 +426,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
 position = Vector2(456, 368)
 shape = SubResource("RectangleShape2D_kvya3")
-
-[node name="SavePoint" parent="." instance=ExtResource("7_37b5s")]
-position = Vector2(280, 296)
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="Player" method="_on_exit_area_body_entered"]

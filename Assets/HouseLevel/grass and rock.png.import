@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsxmh8h5veoqd"
-path="res://.godot/imported/grass and rock.png-64aaad0e96669305793abf59d03ddc56.ctex"
+path="res://.godot/imported/grass and rock.png-21c2b6eb5152f981ff246c20155bf72a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/grass and rock.png"
-dest_files=["res://.godot/imported/grass and rock.png-64aaad0e96669305793abf59d03ddc56.ctex"]
+source_file="res://Assets/HouseLevel/grass and rock.png"
+dest_files=["res://.godot/imported/grass and rock.png-21c2b6eb5152f981ff246c20155bf72a.ctex"]
 
 [params]
 
