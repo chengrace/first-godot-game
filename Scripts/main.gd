@@ -3,9 +3,11 @@
 extends Node2D
 
 @onready var animation_player = $Transition
+@onready var new_game_button = $Background/NewGame
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+	new_game_button.grab_focus()
 
 func _on_new_game_pressed():
 	animation_player.play("fade_out")
