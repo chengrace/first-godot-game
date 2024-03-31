@@ -3,17 +3,19 @@
 extends Node2D
 
 @onready var animation_player = $Transition
+@onready var new_game_button = $Background/NewGame
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	new_game_button.grab_focus()
 
 func _on_new_game_pressed():
 	animation_player.play("fade_out")
 
 func _on_load_game_pressed():
-	Global.loading = true
-	Global.load_game()
-	queue_free()
+	Global.is_saving = false
+	get_tree().change_scene_to_file("res://Scenes/load_game.tscn")
 
 func _on_quit_game_pressed():
 	get_tree().quit()

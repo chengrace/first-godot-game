@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqti668w3tj0f"]
 
 [ext_resource type="Script" path="res://Scripts/save_point.gd" id="1_gdcl8"]
-[ext_resource type="Texture2D" uid="uid://dw4ulshajx3j" path="res://Assets/cloudresized.png" id="2_vc6r2"]
+[ext_resource type="Texture2D" uid="uid://dw4ulshajx3j" path="res://Assets/HouseLevel/cloudresized.png" id="2_vc6r2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5u0x4"]
 atlas = ExtResource("2_vc6r2")
@@ -32,8 +32,8 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1jews"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajrc0"]
+size = Vector2(32, 20)
 
 [node name="SavePoint" type="StaticBody2D"]
 script = ExtResource("1_gdcl8")
@@ -43,4 +43,4 @@ sprite_frames = SubResource("SpriteFrames_ochrm")
 frame_progress = 0.0396116
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_1jews")
+shape = SubResource("RectangleShape2D_ajrc0")
