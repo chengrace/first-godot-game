@@ -3,44 +3,31 @@
 extends Node
 
 signal scene_changed(new_scene)
+signal save_completed
 
-var save_path = "/Users/gracechen/desktop/phone_game_save.json" # you will need to manually change this line for your own PC 
 var current_scene_name
+var current_scene_filename
 var loading = false
-var encryption_password = "pass"
-
-#set current scene on load
-func _ready():
-	current_scene_name = get_tree().get_current_scene().name
+var is_saving = false # toggles whether screen is for saving or loading game
+var data = {}
 
 # Saves game at current scene.
-func save():
-	var current_scene = get_tree().get_current_scene()
-	if current_scene != null:
-		current_scene_name = current_scene.name
-		var data = { 
-			"scene_name": current_scene_name,
-			"scene_filename": current_scene.scene_file_path.get_file(),
-			"timestamp": Time.get_time_dict_from_system()
-		}
-		if current_scene.has_node("Player"):
-			var player = get_tree().get_root().get_node("%s/Player" % current_scene_name)
-			print("Player exists: ", player != null)
-			data["player"] = player.data_to_save()  
-		# converts dictionary (data) into json
-		var json = JSON.new()
-		var to_json = json.stringify(data)
-		# opens save file for writing
-		# var file = FileAccess.open_encrypted_with_pass(save_path, FileAccess.WRITE, encryption_password)
-		var file = FileAccess.open(save_path, FileAccess.WRITE)
-		# writes to save file
-		file.store_line(to_json)
-		# close the file
-		file.close()
-	else:
-		print("No active scene. Cannot save.")
+func save(save_path):
+	data["timestamp"] = Time.get_datetime_dict_from_system()
+	# converts dictionary (data) into json
+	var json = JSON.new()
+	var to_json = json.stringify(data)
+	# opens save file for writing
+	# var file = FileAccess.open_encrypted_with_pass(save_path, FileAccess.WRITE, Constants.encryption_password)
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	# writes to save file
+	file.store_line(to_json)
+	# close the file
+	file.close()
+	emit_signal("save_completed")
+	print("Successfully saved.")
 	
-func load_game():
+func load_game(save_path):
 	if loading and FileAccess.file_exists(save_path):
 		print("Save file found!")
 		var file = FileAccess.open(save_path, FileAccess.READ)
@@ -54,7 +41,6 @@ func load_game():
 		# Change to the loaded scene
 		get_tree().root.call_deferred("add_child", game)        
 		get_tree().call_deferred("set_current_scene", game)
-		current_scene_name = game.name
 		# Now you can load data into the nodes
 		var player = game.get_node("Player")    
 		#checks if they are valid before loading their data
@@ -65,10 +51,19 @@ func load_game():
 	loading = false
 	
 func change_scene(scene_path):
-	#save()
+	var current_scene = get_tree().get_current_scene()
+	current_scene_name = current_scene.name
+	current_scene_filename = current_scene.scene_file_path.get_file()
+	print(current_scene_name)
+	print(current_scene_filename)
 	# Get the current scene
-	current_scene_name = scene_path.get_file().get_basename()
-	var current_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
+	if current_scene != null:
+		data["scene_name"] = current_scene_name
+		data["scene_filename"] = current_scene_filename
+		if current_scene.has_node("Player"):
+			var player = get_tree().get_root().get_node("%s/Player" % current_scene.name)
+			print("Player exists: ", player != null)
+			data["player"] = player.data_to_save()
 	# Free it for the new scene
 	current_scene.queue_free()
 	# Change the scene
