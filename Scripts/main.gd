@@ -7,7 +7,7 @@ extends Node2D
 
 func _ready():
 	#DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	new_game_button.grab_focus()
 
 func _on_new_game_pressed():
