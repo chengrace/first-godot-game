@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://3xviq2qybfjk"]
+[gd_scene load_steps=6 format=3 uid="uid://3xviq2qybfjk"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_m7338"]
 [ext_resource type="AudioStream" uid="uid://cfn7qpvpvs37c" path="res://Assets/Music/inside the mountain.wav" id="2_pnmwf"]
+[ext_resource type="AudioStream" uid="uid://chnbr3atqxh3w" path="res://Assets/SoundFX/shakuhachi-sound.wav" id="3_ax1hc"]
 
 [sub_resource type="Animation" id="Animation_nlh20"]
 resource_name = "fade_out"
@@ -116,11 +117,17 @@ grow_vertical = 2
 text = "Quit Game
 "
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_pnmwf")
 autoplay = true
 
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ax1hc")
+
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
+[connection signal="focus_entered" from="Background/NewGame" to="." method="_on_new_game_focus_entered"]
 [connection signal="pressed" from="Background/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="focus_entered" from="Background/LoadGame" to="." method="_on_load_game_focus_entered"]
 [connection signal="pressed" from="Background/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="focus_entered" from="Background/QuitGame" to="." method="_on_quit_game_focus_entered"]
 [connection signal="pressed" from="Background/QuitGame" to="." method="_on_quit_game_pressed"]
