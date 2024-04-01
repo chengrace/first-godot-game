@@ -83,6 +83,7 @@ offset_right = 45.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 text = "New Game"
 
 [node name="LoadGame" type="Button" parent="Background"]
@@ -98,6 +99,7 @@ offset_right = 48.0
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 text = "Load Game
 "
 
@@ -114,6 +116,7 @@ offset_right = 44.0
 offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 text = "Quit Game
 "
 
