@@ -9,8 +9,12 @@ extends Node2D
 @onready var save2_timestamp = $ColorRect/Save2/Timestamp
 @onready var save2_no_save = $ColorRect/Save2/NoSaveFile
 @onready var first_button = $ColorRect/Save1
+@onready var button_sound = $ButtonSound
+
+var skip_first_button_sound = false #true when completed
 
 func _ready():
+	skip_first_button_sound = false
 	first_button.grab_focus()
 	if !read_from_save_files(Constants.SAVE_PATH_1, save1_title, save1_timestamp):
 		save1_no_save.visible = true
@@ -53,4 +57,15 @@ func _on_save_2_pressed():
 	Global.load_game(Constants.SAVE_PATH_2)
 	print("Loading game 2...")
 	queue_free()
+	
+func _on_new_game_focus_entered():
+	if skip_first_button_sound:
+		button_sound.play()
+	else:
+		skip_first_button_sound = true
 
+func _on_save_1_focus_entered():
+	button_sound.play()
+
+func _on_save_2_focus_entered():
+	button_sound.play()

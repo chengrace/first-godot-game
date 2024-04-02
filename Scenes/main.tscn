@@ -1,122 +1,87 @@
 [gd_scene load_steps=6 format=3 uid="uid://3xviq2qybfjk"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_m7338"]
+[ext_resource type="FontFile" uid="uid://du6g0sw5tw25y" path="res://Assets/Fonts/PixeloidSans-Bold.ttf" id="2_j7k0h"]
 [ext_resource type="AudioStream" uid="uid://cfn7qpvpvs37c" path="res://Assets/Music/inside the mountain.wav" id="2_pnmwf"]
+[ext_resource type="FontFile" uid="uid://b6vb44cd4scl3" path="res://Assets/Fonts/PixeloidSans.ttf" id="3_2htlv"]
 [ext_resource type="AudioStream" uid="uid://chnbr3atqxh3w" path="res://Assets/SoundFX/shakuhachi-sound.wav" id="3_ax1hc"]
-
-[sub_resource type="Animation" id="Animation_nlh20"]
-resource_name = "fade_out"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Transition/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ge4fb"]
-_data = {
-"fade_out": SubResource("Animation_nlh20")
-}
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_m7338")
 
-[node name="Transition" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ge4fb")
-}
-
-[node name="ColorRect" type="ColorRect" parent="Transition"]
-modulate = Color(1, 1, 1, 0)
-z_index = 3
-offset_right = 480.0
-offset_bottom = 360.0
-
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 480.0
 offset_bottom = 360.0
-color = Color(0, 0, 0, 1)
+color = Color(0.666667, 0.282353, 0.317647, 1)
 
-[node name="Label" type="Label" parent="Background"]
+[node name="Title" type="Label" parent="Background"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -128.0
-offset_top = 72.0
+offset_top = 64.0
 offset_right = 128.0
-offset_bottom = 120.0
+offset_bottom = 112.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_j7k0h")
+theme_override_font_sizes/font_size = 30
 text = "PLATFORM CITY"
 horizontal_alignment = 1
 
-[node name="NewGame" type="Button" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -36.0
-offset_right = 45.0
-offset_bottom = -5.0
+offset_left = -91.0
+offset_top = -60.0
+offset_right = 91.0
+offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NewGame" type="Button" parent="Background/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_2htlv")
 text = "New Game"
 
-[node name="LoadGame" type="Button" parent="Background"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = 20.0
-offset_right = 48.0
-offset_bottom = 51.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer2" type="MarginContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LoadGame" type="Button" parent="Background/VBoxContainer/MarginContainer2"]
+layout_mode = 2
 mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_2htlv")
 text = "Load Game
 "
 
-[node name="QuitGame" type="Button" parent="Background"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = 76.0
-offset_right = 44.0
-offset_bottom = 107.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer3" type="MarginContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="QuitGame" type="Button" parent="Background/VBoxContainer/MarginContainer3"]
+layout_mode = 2
 mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_2htlv")
 text = "Quit Game
 "
 
@@ -127,10 +92,9 @@ autoplay = true
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ax1hc")
 
-[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
-[connection signal="focus_entered" from="Background/NewGame" to="." method="_on_new_game_focus_entered"]
-[connection signal="pressed" from="Background/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="focus_entered" from="Background/LoadGame" to="." method="_on_load_game_focus_entered"]
-[connection signal="pressed" from="Background/LoadGame" to="." method="_on_load_game_pressed"]
-[connection signal="focus_entered" from="Background/QuitGame" to="." method="_on_quit_game_focus_entered"]
-[connection signal="pressed" from="Background/QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="focus_entered" from="Background/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_focus_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="focus_entered" from="Background/VBoxContainer/MarginContainer2/LoadGame" to="." method="_on_load_game_focus_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/MarginContainer2/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="focus_entered" from="Background/VBoxContainer/MarginContainer3/QuitGame" to="." method="_on_quit_game_focus_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/MarginContainer3/QuitGame" to="." method="_on_quit_game_pressed"]

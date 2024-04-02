@@ -7,6 +7,7 @@ signal save_completed
 
 var current_scene_name
 var current_scene_filename
+var new_scene_path
 var loading = false
 var is_saving = false # toggles whether screen is for saving or loading game
 var data = {}
@@ -50,12 +51,19 @@ func load_game(save_path):
 		print("Save file not found!")
 	loading = false
 	
-func change_scene(scene_path):
+func change_scene_with_transition(new_scene, transition_name="none", color="LAVENDER_BLUSH"):
+	new_scene_path = new_scene
+	SceneTransition.play_transition(transition_name, color)
+	SceneTransition.anim_in_finished.connect(_on_anim_in_finished)
+	
+# Wait for signal of first half of transition before changing our scene.
+func _on_anim_in_finished():
+	self.change_scene(new_scene_path)
+	
+func change_scene(new_scene_path):
 	var current_scene = get_tree().get_current_scene()
 	current_scene_name = current_scene.name
 	current_scene_filename = current_scene.scene_file_path.get_file()
-	print(current_scene_name)
-	print(current_scene_filename)
 	# Get the current scene
 	if current_scene != null:
 		data["scene_name"] = current_scene_name
@@ -67,10 +75,13 @@ func change_scene(scene_path):
 	# Free it for the new scene
 	current_scene.queue_free()
 	# Change the scene
-	var new_scene = load(scene_path).instantiate()
+	var new_scene = load(new_scene_path).instantiate()
 	get_tree().get_root().call_deferred("add_child", new_scene) 
 	get_tree().call_deferred("set_current_scene", new_scene)    
 	call_deferred("post_scene_change_initialization")
 	
+#only after scene has been changed, do we free our resource     
 func post_scene_change_initialization():
 	scene_changed.emit()
+
+
