@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://wimqq5xrrgox"]
+[gd_scene load_steps=17 format=3 uid="uid://wimqq5xrrgox"]
 
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/HouseLevel/grass and rock.png" id="1_1husp"]
 [ext_resource type="Script" path="res://Scripts/house_area.gd" id="1_n5et7"]
@@ -8,38 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ds4apf8k0rus7" path="res://Scenes/enemy.tscn" id="5_vpjqb"]
 [ext_resource type="PackedScene" uid="uid://dqti668w3tj0f" path="res://Scenes/save_point.tscn" id="7_37b5s"]
 [ext_resource type="AudioStream" uid="uid://fpw0qtl5wxye" path="res://Assets/Music/the natives.wav" id="8_pfp0d"]
-
-[sub_resource type="Animation" id="Animation_bjp4a"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Transition/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6o4b6"]
-_data = {
-"fade_in": SubResource("Animation_bjp4a")
-}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xspkg"]
 texture = ExtResource("1_1husp")
@@ -333,17 +301,6 @@ script = ExtResource("1_n5et7")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_pfp0d")
 autoplay = true
-
-[node name="Transition" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_6o4b6")
-}
-
-[node name="ColorRect" type="ColorRect" parent="Transition"]
-modulate = Color(1, 1, 1, 0)
-z_index = 3
-offset_right = 640.0
-offset_bottom = 384.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_sgerp")

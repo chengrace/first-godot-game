@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2g2xo1duxtxp"]
+[gd_scene load_steps=4 format=3 uid="uid://d2g2xo1duxtxp"]
 
 [ext_resource type="Script" path="res://Scripts/load_game.gd" id="1_nfwgl"]
+[ext_resource type="FontFile" uid="uid://b6vb44cd4scl3" path="res://Assets/Fonts/PixeloidSans.ttf" id="2_t0a1d"]
+[ext_resource type="AudioStream" uid="uid://chnbr3atqxh3w" path="res://Assets/SoundFX/shakuhachi-sound.wav" id="3_t8dip"]
 
 [node name="LoadGameMenu" type="Node2D"]
 script = ExtResource("1_nfwgl")
@@ -8,14 +10,23 @@ script = ExtResource("1_nfwgl")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 480.0
 offset_bottom = 360.0
-color = Color(0, 0, 0, 1)
+color = Color(0.941176, 0.945098, 0.721569, 1)
 
 [node name="Save1" type="Button" parent="ColorRect"]
-layout_mode = 2
-offset_left = 48.0
-offset_top = 64.0
-offset_right = 440.0
-offset_bottom = 164.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -116.0
+offset_right = 168.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_t0a1d")
 
 [node name="CurrentScene" type="Label" parent="ColorRect/Save1"]
 layout_mode = 1
@@ -27,6 +38,7 @@ offset_top = 30.0
 offset_right = 20.0
 offset_bottom = 53.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_t0a1d")
 horizontal_alignment = 1
 
 [node name="Timestamp" type="Label" parent="ColorRect/Save1"]
@@ -42,6 +54,7 @@ offset_right = 20.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_t0a1d")
 
 [node name="NoSaveFile" type="Label" parent="ColorRect/Save1"]
 visible = false
@@ -57,14 +70,24 @@ offset_right = 47.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_t0a1d")
 text = "No Save File"
 
 [node name="Save2" type="Button" parent="ColorRect"]
-layout_mode = 2
-offset_left = 48.0
-offset_top = 200.0
-offset_right = 440.0
-offset_bottom = 300.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = 28.0
+offset_right = 168.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_t0a1d")
 
 [node name="CurrentScene" type="Label" parent="ColorRect/Save2"]
 layout_mode = 1
@@ -76,6 +99,7 @@ offset_top = 30.0
 offset_right = 20.0
 offset_bottom = 53.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_t0a1d")
 
 [node name="Timestamp" type="Label" parent="ColorRect/Save2"]
 layout_mode = 1
@@ -90,6 +114,7 @@ offset_right = 63.5
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_t0a1d")
 
 [node name="NoSaveFile" type="Label" parent="ColorRect/Save2"]
 visible = false
@@ -105,7 +130,13 @@ offset_right = 47.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_t0a1d")
 text = "No Save File"
 
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_t8dip")
+
+[connection signal="focus_entered" from="ColorRect/Save1" to="." method="_on_save_1_focus_entered"]
 [connection signal="pressed" from="ColorRect/Save1" to="." method="_on_save_1_pressed"]
+[connection signal="focus_entered" from="ColorRect/Save2" to="." method="_on_save_2_focus_entered"]
 [connection signal="pressed" from="ColorRect/Save2" to="." method="_on_save_2_pressed"]

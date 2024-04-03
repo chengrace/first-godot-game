@@ -18,7 +18,7 @@ func _input(event):
 		var collision = ray_cast.get_collider()
 		if collision != null and collision.name == "SavePoint":
 			Global.is_saving = true
-			Global.change_scene("res://Scenes/load_game.tscn")
+			Global.change_scene_with_transition("res://Scenes/load_game.tscn")
  
 func _process(_delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -64,6 +64,10 @@ func data_to_save():
 	
 func data_to_load(data):
 	position = Vector2(data.position[0], data.position[1])
+	load_to_new_area(data)
+	
+func load_to_new_area(data):
+	health = data.health - 10
 
 func _on_exit_area_body_entered(body):
 	Global.scene_changed.connect(_on_scene_changed)
