@@ -23,11 +23,12 @@ func _ready():
 
 func _input(event):
 	if event.is_action("ui_back"):
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		var previous_scene = "res://Scenes/" + Global.current_scene_filename
+		Global.change_scene(previous_scene, false)
 
 func read_from_save_files(save_path, save_title, save_timestamp):
 	if FileAccess.file_exists(save_path):
-		print("Save file found!")
+		#print("Save file found!")
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		var data = JSON.parse_string(file.get_as_text())
 		file.close()
@@ -58,14 +59,11 @@ func _on_save_2_pressed():
 	print("Loading game 2...")
 	queue_free()
 	
-func _on_new_game_focus_entered():
+func _on_save_1_focus_entered():
 	if skip_first_button_sound:
 		button_sound.play()
 	else:
 		skip_first_button_sound = true
-
-func _on_save_1_focus_entered():
-	button_sound.play()
 
 func _on_save_2_focus_entered():
 	button_sound.play()

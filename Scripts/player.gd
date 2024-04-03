@@ -64,6 +64,10 @@ func data_to_save():
 	
 func data_to_load(data):
 	position = Vector2(data.position[0], data.position[1])
+	load_to_new_area(data)
+	
+func load_to_new_area(data):
+	health = data.health - 10
 
 func _on_exit_area_body_entered(body):
 	Global.scene_changed.connect(_on_scene_changed)

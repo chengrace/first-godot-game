@@ -18,7 +18,7 @@ func _on_new_game_pressed():
 
 func _on_load_game_pressed():
 	Global.is_saving = false
-	Global.change_scene_with_transition("res://Scenes/load_game.tscn", "dissolve")
+	Global.change_scene_with_transition("res://Scenes/load_game.tscn")
 
 func _on_quit_game_pressed():
 	get_tree().quit()

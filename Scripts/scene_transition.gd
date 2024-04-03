@@ -12,6 +12,7 @@ var in_transition_finished
 func play_transition(anim_name, color):
 	if anim_name == "none":
 		anim_in_finished.emit()
+		in_transition_finished = false
 	else:
 		if anim_name == "dissolve" :
 			color_transition.color = color

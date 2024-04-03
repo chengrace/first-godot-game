@@ -7,7 +7,7 @@ extends Node2D
 # Exit to new area
 func _on_exit_area_body_entered(body):
 	if body.is_in_group("player"):
-		Global.change_scene_with_transition("res://Scenes/new_area.tscn", "wipe")
+		Global.change_scene_with_transition("res://Scenes/new_area.tscn", "wipe", Color.CADET_BLUE)
 		Global.scene_changed.connect(_on_scene_changed)
 
 #only after scene has been changed, do we free our resource     
