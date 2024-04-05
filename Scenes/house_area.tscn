@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wimqq5xrrgox"]
+[gd_scene load_steps=18 format=3 uid="uid://wimqq5xrrgox"]
 
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/HouseLevel/grass and rock.png" id="1_1husp"]
 [ext_resource type="Script" path="res://Scripts/house_area.gd" id="1_n5et7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds4apf8k0rus7" path="res://Scenes/enemy.tscn" id="5_vpjqb"]
 [ext_resource type="PackedScene" uid="uid://dqti668w3tj0f" path="res://Scenes/save_point.tscn" id="7_37b5s"]
 [ext_resource type="AudioStream" uid="uid://fpw0qtl5wxye" path="res://Assets/Music/the natives.wav" id="8_pfp0d"]
+[ext_resource type="PackedScene" uid="uid://ufr156sp7ytg" path="res://Scenes/npc.tscn" id="9_hm53p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xspkg"]
 texture = ExtResource("1_1husp")
@@ -383,6 +384,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
 position = Vector2(456, 368)
 shape = SubResource("RectangleShape2D_kvya3")
+
+[node name="NPC" parent="." instance=ExtResource("9_hm53p")]
+position = Vector2(361, 184)
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="Player" method="_on_exit_area_body_entered"]
