@@ -41,6 +41,7 @@ func move(direction: Vector2) -> void:
 		
 		# Allow movement only if no collision in next tile or if the collider is just its own node:
 		var collision = $RayCast2D.get_collider()
+
 		if collision == null or collision.is_in_group("player"):
 			moving_direction = movement
 			

@@ -21,7 +21,7 @@ func _input(event):
 				Global.is_saving = true
 				Global.change_scene_with_transition("res://Scenes/load_game.tscn")
 			elif collision.is_in_group("npc"):
-				return
+				collision.dialog()
  
 func _process(_delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
