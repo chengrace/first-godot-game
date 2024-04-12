@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://ds4apf8k0rus7"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="2_1pv8t"]
-[ext_resource type="Texture2D" uid="uid://bmkqc4nadmbf7" path="res://Assets/beev2-Sheet.png" id="3_bhfk4"]
+[ext_resource type="Texture2D" uid="uid://bmkqc4nadmbf7" path="res://Assets/Enemy/beev2-Sheet.png" id="3_bhfk4"]
 [ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="3_hnqcx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gv2rt"]

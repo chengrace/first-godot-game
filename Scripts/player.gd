@@ -16,9 +16,12 @@ func _input(event):
 	if event.is_action_pressed("ui_action"):
 		# Save game action
 		var collision = ray_cast.get_collider()
-		if collision != null and collision.name == "SavePoint":
-			Global.is_saving = true
-			Global.change_scene_with_transition("res://Scenes/load_game.tscn")
+		if collision != null:
+			if collision.name == "SavePoint":
+				Global.is_saving = true
+				Global.change_scene_with_transition("res://Scenes/load_game.tscn")
+			elif collision.is_in_group("npc"):
+				collision.dialog()
  
 func _process(_delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

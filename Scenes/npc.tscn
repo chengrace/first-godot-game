@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://ufr156sp7ytg"]
+
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_aooag"]
+[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="1_yj2y4"]
+[ext_resource type="Texture2D" uid="uid://b4jgt5i6polgb" path="res://Assets/NPC/contentfrognpc.png" id="2_jirys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8slxw"]
+atlas = ExtResource("2_jirys")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw68o"]
+atlas = ExtResource("2_jirys")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eywdn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8slxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw68o")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsagg"]
+size = Vector2(31.1806, 22.0242)
+
+[node name="NPC" type="CharacterBody2D" groups=["npc"]]
+process_mode = 3
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_aooag")
+npc_name = "Froggie Wilkins"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.19209e-07, 1.19209e-07)
+sprite_frames = SubResource("SpriteFrames_eywdn")
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.15256e-07, 0)
+scale = Vector2(1.02628, -1.45295)
+shape = SubResource("RectangleShape2D_fsagg")
+
+[node name="GridMovement" parent="." node_paths=PackedStringArray("self_node") instance=ExtResource("1_yj2y4")]
+self_node = NodePath("..")
