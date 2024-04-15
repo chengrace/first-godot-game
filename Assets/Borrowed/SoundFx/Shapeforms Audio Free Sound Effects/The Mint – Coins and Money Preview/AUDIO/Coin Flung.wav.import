@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dx3k2gl7ud61w"
+path="res://.godot/imported/Coin Flung.wav-55cd631b1d17437c03a7078811b696ed.sample"
+
+[deps]
+
+source_file="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/The Mint – Coins and Money Preview/AUDIO/Coin Flung.wav"
+dest_files=["res://.godot/imported/Coin Flung.wav-55cd631b1d17437c03a7078811b696ed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

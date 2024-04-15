@@ -208,4 +208,16 @@ frame_progress = 0.888883
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="DimBackground" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.005, 1.00332)
+color = Color(0.25098, 0.25098, 0.25098, 0.396078)
+
 [node name="DialogPopup" parent="UI" instance=ExtResource("4_h58bl")]
+layer = 2
+visible = false

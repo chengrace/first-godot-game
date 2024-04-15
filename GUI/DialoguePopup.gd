@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var animation_player = $AnimationPlayer
 @onready var dialog_sound = $DialogueFX
 
+signal dialog_finished
+
 #gets the values of our npc from our NPC scene and sets it in the label values
 var npc_name : set = npc_name_set
 var message: set = message_set
@@ -27,22 +29,22 @@ func _input(event):
 				npc.dialog("B")
 
 func portrait_set(new_value):
-	$Dialog/Portrait.texture = new_value
+	$Textbox/Portrait.texture = new_value
 
 #sets the npc name with the value received from NPC
 func npc_name_set(new_value):
 	npc_name = new_value
-	$Dialog/Name.text = new_value
+	$Textbox/NamePlate/Name.text = new_value
 
 #sets the message with the value received from NPC
 func message_set(new_value):
 	message = new_value
-	$Dialog/Message.text = new_value
+	$Textbox/Message.text = new_value
 
 #sets the response with the value received from NPC
 func response_set(new_value):
 	response = new_value
-	$Dialog/Response.text = new_value
+	$Textbox/Response.text = new_value
 	
 #opens the dialog
 func open():
@@ -56,6 +58,7 @@ func close():
 	get_tree().paused = false
 	self.visible = false
 	dialog_sound.play()
+	dialog_finished.emit()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "typewriter":

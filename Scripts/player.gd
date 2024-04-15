@@ -21,6 +21,8 @@ func _input(event):
 				Global.is_saving = true
 				Global.change_scene_with_transition("res://Scenes/load_game.tscn")
 			elif collision.is_in_group("npc"):
+				$UI/DialogPopup.dialog_finished.connect(_on_dialog_finished)
+				$UI/DimBackground.visible = true
 				collision.dialog()
  
 func _process(_delta):
@@ -78,3 +80,6 @@ func _on_exit_area_body_entered(body):
 #only after scene has been changed, do we free our resource     
 func _on_scene_changed():
 	queue_free()
+	
+func _on_dialog_finished():
+	$UI/DimBackground.visible = false

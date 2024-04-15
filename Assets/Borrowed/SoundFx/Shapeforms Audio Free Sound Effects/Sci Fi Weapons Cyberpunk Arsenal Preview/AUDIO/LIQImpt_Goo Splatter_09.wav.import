@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxxif8736f7c6"
+path="res://.godot/imported/LIQImpt_Goo Splatter_09.wav-40177ba8d7215132613ad4c4f41eda8c.sample"
+
+[deps]
+
+source_file="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/LIQImpt_Goo Splatter_09.wav"
+dest_files=["res://.godot/imported/LIQImpt_Goo Splatter_09.wav-40177ba8d7215132613ad4c4f41eda8c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

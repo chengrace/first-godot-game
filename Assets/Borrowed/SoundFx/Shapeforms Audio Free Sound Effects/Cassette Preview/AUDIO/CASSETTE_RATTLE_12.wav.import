@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dphfwj7kp8423"
+path="res://.godot/imported/CASSETTE_RATTLE_12.wav-828b10b0e60d2dcab5de30d4ec41a14e.sample"
+
+[deps]
+
+source_file="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/Cassette Preview/AUDIO/CASSETTE_RATTLE_12.wav"
+dest_files=["res://.godot/imported/CASSETTE_RATTLE_12.wav-828b10b0e60d2dcab5de30d4ec41a14e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

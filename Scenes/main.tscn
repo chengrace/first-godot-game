@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://3xviq2qybfjk"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_m7338"]
-[ext_resource type="FontFile" uid="uid://du6g0sw5tw25y" path="res://Assets/Fonts/PixeloidSans-Bold.ttf" id="2_j7k0h"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/PixeloidSans-Bold.ttf" id="2_j7k0h"]
 [ext_resource type="AudioStream" uid="uid://cfn7qpvpvs37c" path="res://Assets/Music/inside the mountain.wav" id="2_pnmwf"]
-[ext_resource type="FontFile" uid="uid://b6vb44cd4scl3" path="res://Assets/Fonts/PixeloidSans.ttf" id="3_2htlv"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/PixeloidSans.ttf" id="3_2htlv"]
 [ext_resource type="AudioStream" uid="uid://b28tc6uho4ue0" path="res://Assets/SoundFX/button_not_mouse_sound.wav" id="5_777wf"]
 
 [node name="MainMenu" type="Node2D"]
@@ -91,6 +91,8 @@ autoplay = true
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_777wf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="focus_entered" from="Background/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_focus_entered"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_pressed"]
