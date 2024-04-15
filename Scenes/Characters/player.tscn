@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1rw8y"]
 [ext_resource type="Texture2D" uid="uid://grudbxksw8de" path="res://Assets/Player/sprite_with_idle.png" id="1_orjdi"]
-[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="3_7lacg"]
+[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/Characters/grid_movement.tscn" id="3_7lacg"]
 [ext_resource type="PackedScene" uid="uid://4fgwquoy1mwt" path="res://GUI/dialog_popup.tscn" id="4_h58bl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy4s"]

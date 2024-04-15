@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/HouseLevel/grass and rock.png" id="1_dc0yw"]
 [ext_resource type="PackedScene" uid="uid://dqti668w3tj0f" path="res://Scenes/save_point.tscn" id="2_xsw5t"]
-[ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/player.tscn" id="3_vq80v"]
+[ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/Characters/player.tscn" id="3_vq80v"]
 [ext_resource type="Script" path="res://Scripts/follow_cam.gd" id="4_5w7ks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p271v"]

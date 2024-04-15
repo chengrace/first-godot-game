@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ufr156sp7ytg"]
 
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_aooag"]
-[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/grid_movement.tscn" id="1_yj2y4"]
+[ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/Characters/grid_movement.tscn" id="1_yj2y4"]
 [ext_resource type="Texture2D" uid="uid://b4jgt5i6polgb" path="res://Assets/NPC/contentfrognpc.png" id="2_jirys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8slxw"]
