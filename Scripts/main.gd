@@ -6,7 +6,6 @@ extends Node2D
 @onready var button_sound = $ButtonSound
 
 var skip_first_button_sound = false #true when completed
-var stop_input = false
 
 func _ready():
 	$AnimationPlayer.play("slide_in")
@@ -18,6 +17,9 @@ func process():
 	# While animation is playing, don't accept any button input
 	if !$Timer.is_stopped():
 		set_process_input(false)
+		set_process_unhandled_input(false)
+	else:
+		set_process_input(true)
 
 func _input(event):
 	if !$Timer.is_stopped():
@@ -26,7 +28,7 @@ func _input(event):
 			button_sound.play()
 
 func _on_new_game_pressed():
-	Global.change_scene_with_transition("res://Scenes/house_area.tscn", "dissolve")
+	Global.change_scene_with_transition("res://Scenes/apartment_area.tscn", "intro", Color.BLACK)
 
 func _on_load_game_pressed():
 	Global.is_saving = false

@@ -60,9 +60,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -128.0
-offset_top = 96.0
+offset_top = -48.7934
 offset_right = 128.0
-offset_bottom = 144.001
+offset_bottom = -0.792381
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.247059, 0.133333, 0.141176, 1)
 theme_override_fonts/font = ExtResource("2_t5frm")
@@ -78,9 +78,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -91.0
-offset_top = -20.0
+offset_top = 220.0
 offset_right = 91.0
-offset_bottom = 138.006
+offset_bottom = 378.006
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -130,6 +130,7 @@ text = "Quit Game
 "
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("5_24nu8")
 volume_db = -10.0
 autoplay = true

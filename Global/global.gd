@@ -91,7 +91,7 @@ func update_current_scene_info():
 
 func update_player_data():
 	if current_scene.has_node("Player"):
-		var player = get_tree().get_root().get_node("%s/Player" % current_scene.name)
+		var player = get_player()
 		save_data["player"] = player.data_to_save()
 	
 func load_player_data(scene, new_area_flag):
@@ -101,6 +101,12 @@ func load_player_data(scene, new_area_flag):
 			player.load_to_new_area(save_data["player"])
 		else:
 			player.data_to_load(save_data["player"])
+			
+func get_player():
+	var player = get_tree().get_root().get_node("%s/Player" % current_scene.name)
+	print("hi")
+	print(player)
+	print(current_scene.name)
 
 
 
