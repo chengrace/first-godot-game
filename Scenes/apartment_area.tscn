@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://y0p5k14cbbd6"]
+[gd_scene load_steps=26 format=3 uid="uid://y0p5k14cbbd6"]
 
 [ext_resource type="Script" path="res://Scenes/apartment_area.gd" id="1_a8g0b"]
 [ext_resource type="Texture2D" uid="uid://b8scob7u4t07a" path="res://Assets/Borrowed/Top-Down_Retro_Interior/TopDownHouse_SmallItems.png" id="3_601t5"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://b5n7yqa4e6jv0" path="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/Cassette Preview/AUDIO/FAST_FORWARD_LOOP_02.wav" id="8_r8b8p"]
 [ext_resource type="Script" path="res://Scripts/follow_cam.gd" id="9_t7ro2"]
 [ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/Characters/player.tscn" id="10_7fs0f"]
+[ext_resource type="PackedScene" uid="uid://dqti668w3tj0f" path="res://Scenes/save_point.tscn" id="11_flbbc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kqs6v"]
 texture = ExtResource("3_601t5")
@@ -2996,8 +2997,18 @@ size = Vector2(14.5, 191.135)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wa6g0"]
 size = Vector2(254.312, 18)
 
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_6kqyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17uu6"]
+
 [node name="ApartmentArea" type="Node2D"]
 script = ExtResource("1_a8g0b")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 48)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, 240, 48, 288, 48, 304, 0, 256)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 48)
@@ -3009,10 +3020,12 @@ layer_1/name = "furniture_below"
 layer_1/tile_data = PackedInt32Array(393216, 655363, 4, 458752, 655363, 5, 524288, 655363, 6, 393217, 720899, 4, 458753, 720899, 5, 524289, 720899, 6, 393218, 786435, 4, 458754, 786435, 5, 524290, 786435, 6, 30, 262148, 12, 65566, 262148, 13, 131102, 262148, 14, 31, 327684, 12, 65567, 327684, 13, 131103, 327684, 14, 32, 393220, 12, 65568, 393220, 13, 131104, 393220, 14, 33, 458756, 12, 65569, 458756, 13, 131105, 458756, 14, 34, 524292, 12, 65570, 524292, 13, 131106, 524292, 14, 35, 589828, 12, 65571, 589828, 13, 131107, 589828, 14, 36, 655364, 12, 65572, 655364, 13, 131108, 655364, 14, 37, 720900, 12, 65573, 720900, 13, 131109, 720900, 14, 38, 786436, 12, 65574, 786436, 13, 131110, 786436, 14, 196645, 720900, 15, 196646, 786436, 15, 393246, 3, 2, 458782, 3, 3, 393247, 65539, 2, 458783, 65539, 3, 393248, 131075, 2, 458784, 131075, 3, 11, 3, 0, 65547, 3, 1, 12, 65539, 0, 65548, 65539, 1)
 layer_2/name = "furniture_above"
 layer_2/z_index = 1
-layer_2/tile_data = PackedInt32Array(0, 393219, 4, 65536, 393219, 5, 131072, 393219, 6, 1, 458755, 4, 65537, 458755, 5, 131073, 458755, 6, 2, 524291, 4, 65538, 524291, 5, 131074, 524291, 6, 4, 327683, 10, 65540, 327683, 11, 5, 393219, 10, 65541, 393219, 11, 6, 458755, 10, 65542, 458755, 11, 7, 524291, 10, 65543, 524291, 11, 9, 589827, 10, 65545, 589827, 11, 10, 655363, 10, 65546, 655363, 11, 393216, 3, 13, 458752, 3, 14, 524288, 3, 15, 393217, 65539, 13, 458753, 65539, 14, 524289, 65539, 15, -65508, 131075, 12, 28, 131075, 13, 65564, 131075, 14, 131100, 131075, 15, -65507, 196611, 12, 29, 196611, 13, 65565, 196611, 14, 131101, 196611, 15, 458781, 589827, 1, 327712, 524291, 1, 8, 3, 10, 65544, 3, 11, -131035, 262147, 15, -131034, 327683, 15, -65521, 196611, 7, 15, 196611, 8, 65551, 196611, 9, -131038, 917510, 8, -65502, 917510, 9, -131037, 983046, 8, -65501, 983046, 9, -131053, 917510, 5, -65517, 917510, 6, 19, 917510, 7, -131052, 983046, 5, -65516, 983046, 6, 20, 983046, 7, -131069, 786438, 3, -65533, 786438, 4, -131068, 851974, 3, -65532, 851974, 4, -131060, 786438, 3, -65524, 786438, 4, -131059, 851974, 3, -65523, 851974, 4, 31, 327682, 4, 30, 393218, 5, 393248, 458754, 6, 393246, 2, 3, -131040, 327682, 1, 917504, 131078, 5, 983040, 131078, 6, 1048576, 131078, 7, 1114112, 131078, 8, 1114113, 196614, 8, 1048577, 196614, 7, 983041, 196614, 6, 1048578, 262150, 7, 1048579, 327686, 7, 1114115, 327686, 8, 1179651, 327686, 9, 1179650, 262150, 9, 1114114, 262150, 8, 917505, 196614, 5, 983042, 262150, 6, 1179649, 196614, 9, 1179648, 131078, 9)
+layer_2/tile_data = PackedInt32Array(0, 393219, 4, 65536, 393219, 5, 131072, 393219, 6, 1, 458755, 4, 65537, 458755, 5, 131073, 458755, 6, 2, 524291, 4, 65538, 524291, 5, 131074, 524291, 6, 4, 327683, 10, 65540, 327683, 11, 5, 393219, 10, 65541, 393219, 11, 6, 458755, 10, 65542, 458755, 11, 7, 524291, 10, 65543, 524291, 11, 9, 589827, 10, 65545, 589827, 11, 10, 655363, 10, 65546, 655363, 11, 393216, 3, 13, 458752, 3, 14, 524288, 3, 15, 393217, 65539, 13, 458753, 65539, 14, 524289, 65539, 15, -65508, 131075, 12, 28, 131075, 13, 65564, 131075, 14, 131100, 131075, 15, -65507, 196611, 12, 29, 196611, 13, 65565, 196611, 14, 131101, 196611, 15, 458781, 589827, 1, 327712, 524291, 1, 8, 3, 10, 65544, 3, 11, -131035, 262147, 15, -131034, 327683, 15, -65521, 196612, 7, 15, 196612, 8, 65551, 196612, 9, -131038, 917510, 8, -65502, 917510, 9, -131037, 983046, 8, -65501, 983046, 9, -131053, 917510, 5, -65517, 917510, 6, 19, 917510, 7, -131052, 983046, 5, -65516, 983046, 6, 20, 983046, 7, -131069, 786438, 3, -65533, 786438, 4, -131068, 851974, 3, -65532, 851974, 4, -131060, 786438, 3, -65524, 786438, 4, -131059, 851974, 3, -65523, 851974, 4, 31, 327682, 4, 30, 393218, 5, 393248, 458754, 6, 393246, 2, 3, -131040, 327682, 1, 655360, 4, 11, 589824, 4, 10, 38, 458754, 1, 37, 393218, 3, 34, 262146, 6, 917504, 196614, 5, 983041, 262150, 6, 1048578, 327686, 7)
 layer_3/name = "overhead"
 layer_3/z_index = 3
 layer_3/tile_data = PackedInt32Array(262176, 524291, 0, 393245, 589827, 0, 327680, 720899, 7, 327681, 786435, 7)
+layer_4/name = "stairs"
+layer_4/tile_data = PackedInt32Array(983039, 131078, 5, 1048575, 131078, 6, 1114111, 131078, 7, 1179647, 131078, 8, 1245183, 131078, 9, 917504, 196614, 5, 983040, 196614, 6, 1048576, 196614, 7, 1114112, 196614, 8, 1179648, 196614, 9, 983041, 262150, 6, 1048577, 262150, 7, 1114113, 262150, 8, 1179649, 262150, 9, 1048578, 327686, 7, 1114114, 327686, 8, 1179650, 327686, 9)
 
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_r8b8p")
@@ -3073,3 +3086,25 @@ shape = SubResource("RectangleShape2D_m0n71")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Walls/StaticBody2D6"]
 position = Vector2(512.844, 266)
 shape = SubResource("RectangleShape2D_wa6g0")
+
+[node name="SavePoint" parent="." instance=ExtResource("11_flbbc")]
+position = Vector2(352, 328)
+
+[node name="ExitHouse" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitHouse"]
+position = Vector2(320, 48)
+shape = SubResource("SeparationRayShape2D_6kqyd")
+
+[node name="GoUpstairs" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoUpstairs"]
+position = Vector2(-8, 288)
+shape = SubResource("RectangleShape2D_17uu6")
+
+[connection signal="body_entered" from="ExitHouse" to="." method="_on_exit_house_body_entered"]
+[connection signal="body_entered" from="GoUpstairs" to="." method="_on_go_upstairs_body_entered"]

@@ -65,7 +65,7 @@ func _on_anim_in_finished():
 	
 func change_scene(next_scene_path, new_area_flag=true):
 	update_current_scene_info()
-	update_player_data()
+	#update_player_data()
 	if save_data.has("player"):
 		print(save_data["player"])
 	# Free it for the next scene

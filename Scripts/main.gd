@@ -28,7 +28,7 @@ func _input(event):
 			button_sound.play()
 
 func _on_new_game_pressed():
-	Global.change_scene_with_transition("res://Scenes/apartment_area.tscn", "intro", Color.BLACK)
+	Global.change_scene_with_transition("res://Scenes/apartment_area.tscn", "dissolve", Color.BLACK)
 
 func _on_load_game_pressed():
 	Global.is_saving = false
