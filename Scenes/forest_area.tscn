@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://5ry510l2wgjv"]
 
-[ext_resource type="Script" path="res://Scenes/forest_area.gd" id="1_206q8"]
+[ext_resource type="Script" path="res://Scripts/forest_area.gd" id="1_206q8"]
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/HouseLevel/grass and rock.png" id="2_otace"]
 [ext_resource type="Texture2D" uid="uid://uglaoaexv2vv" path="res://Assets/Borrowed/NinjaAdventure/Backgrounds/Tilesets/TilesetNature.png" id="3_tvrg8"]
 [ext_resource type="Texture2D" uid="uid://bgxvkl6ovnh23" path="res://Assets/Borrowed/NinjaAdventure/Backgrounds/Tilesets/TilesetWater.png" id="4_xu1of"]

@@ -294,7 +294,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_od5po"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv0mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvya3"]
 size = Vector2(50, 18)
@@ -380,8 +380,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterHouse"]
-position = Vector2(8, -16)
-shape = SubResource("SeparationRayShape2D_od5po")
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_jv0mu")
 
 [node name="ExitArea" type="Area2D" parent="."]
 collision_layer = 0

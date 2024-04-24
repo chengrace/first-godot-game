@@ -15,11 +15,12 @@ func _ready():
 
 func process():
 	# While animation is playing, don't accept any button input
-	if !$Timer.is_stopped():
-		set_process_input(false)
-		set_process_unhandled_input(false)
-	else:
-		set_process_input(true)
+	#if !$Timer.is_stopped():
+		#set_process_input(false)
+		#set_process_unhandled_input(false)
+	#else:
+		#set_process_input(true)
+	pass
 
 func _input(event):
 	if !$Timer.is_stopped():

@@ -10,7 +10,7 @@ var current_scene_filename
 var next_scene_path
 
 var loading = false
-var is_saving = false # toggles whether screen is for saving or loading game
+var is_saving = false # toggles whether load_game.tscn screen is for saving or loading game
 var save_data = {}
 
 func _ready():
@@ -55,17 +55,22 @@ func load_game(save_path):
 		print("Save file not found!")
 	loading = false
 	
-func change_scene_with_transition(next_scene, transition_name="none", color="LAVENDER_BLUSH"):
+func change_scene_with_transition(next_scene, transition_name="none", color=Color.BLACK, new_area_flag=true):
 	next_scene_path = next_scene
 	SceneTransition.play_transition(transition_name, color)
 	
-# Wait for signal of first half of transition before changing our scene.
+## Wait for signal of first half of transition before changing our scene.
 func _on_anim_in_finished():
+	print("animation finished, changing scene now")
 	self.change_scene(next_scene_path)
+	print(next_scene_path)
 	
-func change_scene(next_scene_path, new_area_flag=true):
+func change_scene(next_scene_path, new_area_flag):
+	print(next_scene_path)
 	update_current_scene_info()
+	print(current_scene)
 	update_player_data()
+	print(save_data)
 	if save_data.has("player"):
 		print(save_data["player"])
 	# Free it for the next scene
@@ -95,7 +100,9 @@ func update_player_data():
 		save_data["player"] = player.data_to_save()
 	
 func load_player_data(scene, new_area_flag):
+	print("in load player data")
 	if scene.has_node("Player") and save_data.has("player"):
+		print("scene has player and save file has player info")
 		var player = scene.get_node("Player")
 		if new_area_flag:
 			player.load_to_new_area(save_data["player"])
