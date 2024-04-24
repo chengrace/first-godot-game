@@ -9,7 +9,7 @@ func _ready():
 func _on_exit_house_body_entered(body):
 	if body.is_in_group("player"):
 		Global.change_scene_with_transition("res://Scenes/house_area.tscn")
-#
+		
 #func _on_go_upstairs_body_entered(body):
 	#if body.is_in_group("player"):
 		#Global.change_scene_with_transition("res://Scenes/new_area.tscn")

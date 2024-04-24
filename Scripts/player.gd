@@ -49,15 +49,15 @@ func moving_animation(input_direction: Vector2) -> void:
  
 func vector2Direction(vec: Vector2) -> String:
 	var direction = "down"
-	if vec.y > 0: direction = "down"
-	elif vec.y < 0: direction = "up"
-	elif vec.x > 0:
+	if vec.x > 0:
 		animated_sprite.flip_h = true
 		direction = "side" #facing right
 	elif vec.x < 0:
 		# Horizontal flip since we have one animation for both left and right walking and idle
 		animated_sprite.flip_h = false
 		direction = "side" #facing left
+	elif vec.y > 0: direction = "down"
+	elif vec.y < 0: direction = "up"
 		
 	return direction
 
