@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/22 - Dream.ogg-a1f56b84e1f698ca0361d875282376
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

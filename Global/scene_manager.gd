@@ -1,4 +1,4 @@
-## global.gd 
+## scene_manager.gd 
 
 extends Node
 
@@ -8,6 +8,7 @@ signal save_completed
 var current_scene
 var current_scene_filename
 var next_scene_path
+var new_area_flag
 
 var loading = false
 var is_saving = false # toggles whether load_game.tscn screen is for saving or loading game
@@ -55,31 +56,28 @@ func load_game(save_path):
 		print("Save file not found!")
 	loading = false
 	
-func change_scene_with_transition(next_scene, transition_name="none", color=Color.BLACK, new_area_flag=true):
+func change_scene_with_transition(next_scene, transition_name="none", color=Color.BLACK, new_area=true):
 	next_scene_path = next_scene
+	new_area_flag = new_area
 	SceneTransition.play_transition(transition_name, color)
 	
 ## Wait for signal of first half of transition before changing our scene.
 func _on_anim_in_finished():
-	print("animation finished, changing scene now")
-	self.change_scene(next_scene_path)
-	print(next_scene_path)
+	self.change_scene(next_scene_path, new_area_flag)
 	
 func change_scene(next_scene_path, new_area_flag):
-	print(next_scene_path)
 	update_current_scene_info()
-	print(current_scene)
 	update_player_data()
-	print(save_data)
 	if save_data.has("player"):
 		print(save_data["player"])
 	# Free it for the next scene
 	current_scene.queue_free()
+	#print("freed scene")
 	# Change the scene
 	var next_scene = load(next_scene_path).instantiate()
 	get_tree().get_root().call_deferred("add_child", next_scene) 
 	get_tree().call_deferred("set_current_scene", next_scene)   
-	call_deferred("post_scene_change_initialization")
+	#call_deferred("post_scene_change_initialization")
 	load_player_data(next_scene, new_area_flag)
 
 #only after scene has been changed, do we free our resource     
@@ -100,7 +98,6 @@ func update_player_data():
 		save_data["player"] = player.data_to_save()
 	
 func load_player_data(scene, new_area_flag):
-	print("in load player data")
 	if scene.has_node("Player") and save_data.has("player"):
 		print("scene has player and save file has player info")
 		var player = scene.get_node("Player")
