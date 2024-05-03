@@ -2,13 +2,13 @@
 
 extends CharacterBody2D
 
-@onready var dialog_popup = %Player/UI/DialogPopup
-@onready var player = %Player
+@onready var player = get_node("../Player")
+@onready var dialog_popup = get_node("../Player/UI/DialogPopup")
 @onready var ray_cast = $GridMovement/RayCast2D
 @onready var animation_sprite = $AnimatedSprite2D
-@onready var sprite_texture = load("res://Assets/NPC/contentfrognpc.png")
 
 @export var npc_name = ""
+@export var npc_portrait: Texture2D
 
 var dialog_state = 0
 
@@ -29,8 +29,8 @@ func dialog(response = ""):
 	
 	# Set dialog_popup npc to be referencing this npc
 	dialog_popup.npc = self
-	dialog_popup.npc_name = str(npc_name)
-	dialog_popup.portrait = sprite_texture
+	#dialog_popup.npc_name = str(npc_name)
+	dialog_popup.portrait = npc_portrait
 	
 	# dialog tree
 	match dialog_state:
@@ -38,7 +38,7 @@ func dialog(response = ""):
 			# Update dialog tree state
 			dialog_state = 1
 			# Show dialog popup
-			dialog_popup.message = "Hey partner, have a minute to spare?"
+			dialog_popup.message = "Froggie Wilkins: Hey partner, have a minute to spare?"
 			dialog_popup.response = "[A] Yes  [B] No"
 			dialog_popup.open() #re-open to show next dialog
 		1:
@@ -47,15 +47,15 @@ func dialog(response = ""):
 					# Update dialog tree state
 					dialog_state = 2
 					# Show dialog popup
-					dialog_popup.message = "Good, because I need your help finding my coffin key."
-					dialog_popup.response = "[A] Bye"
+					dialog_popup.message = "Froggie Wilkins: Good, because I need your help finding my coffin key."
+					dialog_popup.response = "[A] Sure."
 					dialog_popup.open() #re-open to show next dialog
 				"B":
 					# Update dialog tree state
 					dialog_state = 3
 					# Show dialog popup
-					dialog_popup.message = "Well, I didn't like your face anyway."
-					dialog_popup.response = "[A] Bye"
+					dialog_popup.message = "Froggie Wilkins: Well, I didn't like your face anyway."
+					dialog_popup.response = "[A] Dang bro that's harsh."
 					dialog_popup.open() #re-open to show next dialog
 		2:
 			# Update dialog tree state

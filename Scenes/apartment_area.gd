@@ -33,7 +33,8 @@ func _on_exit_house_body_exited(body):
 		
 func _on_go_upstairs_body_entered(body):
 	if body.is_in_group("player"):
-		SceneManager.change_scene_with_transition("res://Scenes/forest_area.tscn")
+		pass
+		#SceneManager.change_scene_with_transition("res://Scenes/forest_area.tscn")
 #
 ##only after scene has been changed, do we free our resource     
 func _on_scene_changed():

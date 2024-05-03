@@ -94,9 +94,6 @@ theme_override_constants/margin_bottom = 10
 [node name="NewGame" type="Button" parent="ColorRect/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../../MarginContainer3/QuitGame")
-focus_next = NodePath("../../MarginContainer2/LoadGame")
-focus_previous = NodePath("../../MarginContainer3/QuitGame")
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.960784, 0.854902, 0.752941, 1)
 theme_override_fonts/font = ExtResource("2_hxggj")
@@ -111,8 +108,6 @@ theme_override_constants/margin_bottom = 10
 
 [node name="LoadGame" type="Button" parent="ColorRect/VBoxContainer/MarginContainer2"]
 layout_mode = 2
-focus_next = NodePath("../../MarginContainer3/QuitGame")
-focus_previous = NodePath("../../MarginContainer/NewGame")
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.960784, 0.854902, 0.752941, 1)
 theme_override_fonts/font = ExtResource("2_hxggj")
@@ -128,9 +123,6 @@ theme_override_constants/margin_bottom = 10
 
 [node name="QuitGame" type="Button" parent="ColorRect/VBoxContainer/MarginContainer3"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../../MarginContainer/NewGame")
-focus_next = NodePath("../../MarginContainer/NewGame")
-focus_previous = NodePath("../../MarginContainer2/LoadGame")
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.960784, 0.854902, 0.752941, 1)
 theme_override_fonts/font = ExtResource("2_hxggj")

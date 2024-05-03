@@ -9,10 +9,12 @@ var new_area_path = ""
 func _ready():
 	SceneManager.scene_changed.connect(_on_scene_changed)
 	if SceneManager.temp_save_data.has("scene_filename"):
-		if SceneManager.temp_save_data["scene_filename"] == "apartment_area.tscn":
-			$Player.position = Vector2(420,200)
-		elif SceneManager.temp_save_data["scene_filename"] == "load_game.tscn":
+		if SceneManager.temp_save_data["scene_filename"] == "load_game.tscn":
 			$Player.data_to_load()
+		elif SceneManager.temp_save_data["scene_filename"] == "apartment_area.tscn":
+			$Player.position = Vector2(420,200)
+		elif SceneManager.temp_save_data["scene_filename"] == "forest_area.tscn":
+			$Player.position = Vector2(448,330)
 	else:
 		$Player.position = Vector2(150,150)
 	

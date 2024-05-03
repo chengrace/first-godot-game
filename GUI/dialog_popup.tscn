@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://4fgwquoy1mwt"]
 
 [ext_resource type="Script" path="res://GUI/DialoguePopup.gd" id="1_f1c6r"]
-[ext_resource type="Texture2D" uid="uid://c5uhdphq6drmk" path="res://Assets/Borrowed/Edinnu_UI_asset_pack/Dialogue_plates/Plate (34).png" id="2_eotbu"]
-[ext_resource type="Texture2D" uid="uid://bacjxf71k12k2" path="res://Assets/Borrowed/Edinnu_UI_asset_pack/Dialogue_plates/Plate (11).png" id="3_jonud"]
+[ext_resource type="Texture2D" uid="uid://cpphigqfeb42r" path="res://Assets/Borrowed/NinjaAdventure/HUD/Dialog/DialogueBoxSimple.png" id="2_g4ffo"]
+[ext_resource type="Texture2D" uid="uid://cm1wmr38sdjr7" path="res://Assets/Borrowed/NinjaAdventure/HUD/Dialog/FacesetBox.png" id="3_cnyji"]
 [ext_resource type="FontFile" uid="uid://q411ts3sa2ao" path="res://Assets/Borrowed/Fonts/monogram/ttf/monogram.ttf" id="4_lnsxi"]
 [ext_resource type="AudioStream" uid="uid://py1afc4tx7se" path="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/Arcane Activations Preview/AUDIO/UI Message Appear 01.wav" id="5_o6cx4"]
 
@@ -31,34 +31,25 @@ process_mode = 2
 script = ExtResource("1_f1c6r")
 
 [node name="Textbox" type="Sprite2D" parent="."]
-position = Vector2(232, 320)
-texture = ExtResource("2_eotbu")
+position = Vector2(240, 320)
+scale = Vector2(1.16667, 1.32759)
+texture = ExtResource("2_g4ffo")
 
-[node name="NamePlate" type="Sprite2D" parent="Textbox"]
-position = Vector2(-96, -56)
-texture = ExtResource("3_jonud")
+[node name="FacesetBox" type="Sprite2D" parent="Textbox"]
+position = Vector2(-130.286, -1.52588e-05)
+scale = Vector2(1, 1)
+texture = ExtResource("3_cnyji")
 
-[node name="Name" type="Label" parent="Textbox/NamePlate"]
-offset_left = -48.0
-offset_top = -8.0
-offset_right = 48.0
-offset_bottom = 8.0
-theme_override_colors/font_color = Color(0.94902, 0.666667, 0.454902, 1)
-theme_override_fonts/font = ExtResource("4_lnsxi")
-text = "Ember"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Portrait" type="Sprite2D" parent="Textbox"]
-position = Vector2(104, -8)
-scale = Vector2(0.5625, 0.554688)
+[node name="Portrait" type="Sprite2D" parent="Textbox/FacesetBox"]
+position = Vector2(1.43051e-06, 0)
+scale = Vector2(1, 1)
 
 [node name="Message" type="Label" parent="Textbox"]
-offset_left = -136.0
-offset_top = -24.0
-offset_right = 179.0
-offset_bottom = 16.0
-scale = Vector2(0.711209, 1)
+offset_left = -102.857
+offset_top = -24.1039
+offset_right = 144.143
+offset_bottom = 1.89608
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_lnsxi")
 text = "Text here..."
 autowrap_mode = 2
@@ -66,11 +57,11 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="Response" type="Label" parent="Textbox"]
-offset_left = -144.0
-offset_top = 16.0
-offset_right = 56.0
-offset_bottom = 32.0
-theme_override_colors/font_color = Color(0.839216, 0.764706, 0.462745, 1)
+offset_left = -80.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.552941, 0.337255, 0.266667, 1)
 theme_override_fonts/font = ExtResource("4_lnsxi")
 text = "Answer
 "

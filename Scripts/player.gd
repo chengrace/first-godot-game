@@ -6,8 +6,13 @@ extends CharacterBody2D
 @onready var ray_cast = $GridMovement/RayCast2D
 
 var health = 100
+var direction
  
 func _ready():
+	if SceneManager.temp_save_data.has("player"):
+		var data = SceneManager.temp_save_data["player"]
+		if data.has("direction_facing"):
+			animated_sprite.play("idle_" + data.direction_facing)
 	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
 	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
 	animated_sprite.play("idle_down")
@@ -48,7 +53,7 @@ func moving_animation(input_direction: Vector2) -> void:
 	animated_sprite.play(animation_state)
  
 func vector2Direction(vec: Vector2) -> String:
-	var direction = "down"
+	direction = "down"
 	if vec.x > 0:
 		animated_sprite.flip_h = true
 		direction = "side" #facing right
@@ -64,7 +69,8 @@ func vector2Direction(vec: Vector2) -> String:
 func data_to_save():
 	return {
 		"position": [position.x, position.y],
-		"health": health
+		"health": health,
+		"direction_facing": direction
 	}
 	
 func data_to_load():

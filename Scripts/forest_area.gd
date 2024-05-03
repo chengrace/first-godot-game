@@ -6,11 +6,11 @@ func _ready():
 	$BGM.play()
 	if SceneManager.temp_save_data.has("scene_filename"):
 		if SceneManager.temp_save_data["scene_filename"] == "house_area.tscn":
-			$Player.position = Vector2(100,130)
+			$Player.position = Vector2(80,60)
 		elif SceneManager.temp_save_data["scene_filename"] == "load_game.tscn":
 			$Player.data_to_load()
 	else:
-		$Player.position = Vector2(400,200)
+		$Player.position = Vector2(96,130)
 
 #only after scene has been changed, do we free our resource     
 func _on_scene_changed():
