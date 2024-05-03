@@ -5,7 +5,7 @@
 ##### Started Feb 28, 2024
 1. Set up player character + grid movement ✔ 
 2. Set up tilemap of first spawned area ✔ 
-3. Set up NPC + pathing + dialogue
+3. Set up NPC + dialogue ✔
 4. Set up Enemy + pathing ✔ 
 5. Set up turn-based combat 
 6. Set up basic Title Screen ✔ 
