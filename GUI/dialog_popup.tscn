@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://4fgwquoy1mwt"]
+[gd_scene load_steps=8 format=3 uid="uid://4fgwquoy1mwt"]
 
 [ext_resource type="Script" path="res://GUI/DialoguePopup.gd" id="1_f1c6r"]
-[ext_resource type="FontFile" uid="uid://b6vb44cd4scl3" path="res://Assets/Fonts/PixeloidSans.ttf" id="2_0odsl"]
-[ext_resource type="AudioStream" uid="uid://b28tc6uho4ue0" path="res://Assets/SoundFX/button_not_mouse_sound.wav" id="3_k8qum"]
+[ext_resource type="Texture2D" uid="uid://cpphigqfeb42r" path="res://Assets/Borrowed/NinjaAdventure/HUD/Dialog/DialogueBoxSimple.png" id="2_g4ffo"]
+[ext_resource type="Texture2D" uid="uid://cm1wmr38sdjr7" path="res://Assets/Borrowed/NinjaAdventure/HUD/Dialog/FacesetBox.png" id="3_cnyji"]
+[ext_resource type="FontFile" uid="uid://q411ts3sa2ao" path="res://Assets/Borrowed/Fonts/monogram/ttf/monogram.ttf" id="4_lnsxi"]
+[ext_resource type="AudioStream" uid="uid://py1afc4tx7se" path="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/Arcane Activations Preview/AUDIO/UI Message Appear 01.wav" id="5_o6cx4"]
 
 [sub_resource type="Animation" id="Animation_y7dg8"]
 resource_name = "typewriter"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DialogPopup/Dialog/Message:visible_ratio")
+tracks/0/path = NodePath("DialogPopup/Textbox/Message:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,65 +28,45 @@ _data = {
 
 [node name="DialogPopup" type="CanvasLayer"]
 process_mode = 2
-visible = false
 script = ExtResource("1_f1c6r")
 
-[node name="Dialog" type="ColorRect" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -152.0
-offset_top = -72.0
-offset_right = 158.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.262745, 0.580392, 0.67451, 1)
+[node name="Textbox" type="Sprite2D" parent="."]
+position = Vector2(240, 320)
+scale = Vector2(1.16667, 1.32759)
+texture = ExtResource("2_g4ffo")
 
-[node name="Name" type="Label" parent="Dialog"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 295.0
-offset_bottom = 28.0
-theme_override_colors/font_color = Color(0.698039, 0.384314, 0.270588, 1)
-theme_override_fonts/font = ExtResource("2_0odsl")
-theme_override_font_sizes/font_size = 12
-text = "Ember"
+[node name="FacesetBox" type="Sprite2D" parent="Textbox"]
+position = Vector2(-130.286, -1.52588e-05)
+scale = Vector2(1, 1)
+texture = ExtResource("3_cnyji")
 
-[node name="Message" type="Label" parent="Dialog"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 23.0
-offset_right = 295.0
-offset_bottom = 53.0
-theme_override_fonts/font = ExtResource("2_0odsl")
-theme_override_font_sizes/font_size = 10
-text = "Text here..
-"
+[node name="Portrait" type="Sprite2D" parent="Textbox/FacesetBox"]
+position = Vector2(1.43051e-06, 0)
+scale = Vector2(1, 1)
+
+[node name="Message" type="Label" parent="Textbox"]
+offset_left = -102.857
+offset_top = -24.1039
+offset_right = 144.143
+offset_bottom = 1.89608
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_lnsxi")
+text = "Text here..."
 autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Response" type="Label" parent="Dialog"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 55.0
-offset_right = 295.0
-offset_bottom = 71.0
-theme_override_colors/font_color = Color(0.839216, 0.764706, 0.462745, 1)
-theme_override_fonts/font = ExtResource("2_0odsl")
-theme_override_font_sizes/font_size = 10
+[node name="Response" type="Label" parent="Textbox"]
+offset_left = -80.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.552941, 0.337255, 0.266667, 1)
+theme_override_fonts/font = ExtResource("4_lnsxi")
 text = "Answer
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Portrait" type="Sprite2D" parent="Dialog"]
-position = Vector2(279, 31)
-scale = Vector2(0.5625, 0.554688)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -93,6 +75,6 @@ libraries = {
 }
 
 [node name="DialogueFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_k8qum")
+stream = ExtResource("5_o6cx4")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

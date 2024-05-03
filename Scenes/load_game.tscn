@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2g2xo1duxtxp"]
 
 [ext_resource type="Script" path="res://Scripts/load_game.gd" id="1_nfwgl"]
-[ext_resource type="FontFile" uid="uid://b6vb44cd4scl3" path="res://Assets/Fonts/PixeloidSans.ttf" id="2_t0a1d"]
+[ext_resource type="FontFile" uid="uid://b6vb44cd4scl3" path="res://Assets/Borrowed/Fonts/PixeloidSans.ttf" id="2_t0a1d"]
 [ext_resource type="AudioStream" uid="uid://b28tc6uho4ue0" path="res://Assets/SoundFX/button_not_mouse_sound.wav" id="3_0pcq7"]
 
 [node name="LoadGameMenu" type="Node2D"]

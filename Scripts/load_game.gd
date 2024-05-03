@@ -23,8 +23,8 @@ func _ready():
 
 func _input(event):
 	if event.is_action("ui_back"):
-		var previous_scene = "res://Scenes/" + Global.current_scene_filename
-		Global.change_scene(previous_scene, false)
+		var previous_scene = "res://Scenes/" + SceneManager.current_scene_filename
+		SceneManager.change_scene(previous_scene)
 
 func read_from_save_files(save_path, save_title, save_timestamp):
 	if FileAccess.file_exists(save_path):
@@ -33,29 +33,33 @@ func read_from_save_files(save_path, save_title, save_timestamp):
 		var data = JSON.parse_string(file.get_as_text())
 		file.close()
 		# Load the saved scene
-		save_title.text = data["scene_name"]
-		save_timestamp.text = Time.get_datetime_string_from_datetime_dict(data["timestamp"], true)
-		return true
+		if !data.has("saved_at_scene") or !data.has("timestamp"):
+			print(data)
+			return false
+		else:
+			save_title.text = data["saved_at_scene"]
+			save_timestamp.text = Time.get_datetime_string_from_datetime_dict(data["timestamp"], true)
+			return true
 	else:
 		return false
 
 func _on_save_1_pressed():
-	if Global.is_saving:
-		Global.save(Constants.SAVE_PATH_1)
+	if SceneManager.is_saving:
+		SceneManager.save(Constants.SAVE_PATH_1)
 		print("Saving game 1...")
 		await "save_completed"
-	Global.loading = true
-	Global.load_game(Constants.SAVE_PATH_1)
+	SceneManager.loading = true
+	SceneManager.load_game(Constants.SAVE_PATH_1)
 	print("Loading game 1...")
 	queue_free()
 
 func _on_save_2_pressed():
-	if Global.is_saving:
-		Global.save(Constants.SAVE_PATH_2)
+	if SceneManager.is_saving:
+		SceneManager.save(Constants.SAVE_PATH_2)
 		print("Saving game 2...")
 		await "save_completed"
-	Global.loading = true
-	Global.load_game(Constants.SAVE_PATH_2)
+	SceneManager.loading = true
+	SceneManager.load_game(Constants.SAVE_PATH_2)
 	print("Loading game 2...")
 	queue_free()
 	

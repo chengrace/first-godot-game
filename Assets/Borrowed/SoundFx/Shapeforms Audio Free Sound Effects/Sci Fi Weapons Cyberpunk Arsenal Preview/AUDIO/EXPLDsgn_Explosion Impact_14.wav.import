@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2m5yiru8t7c8"
+path="res://.godot/imported/EXPLDsgn_Explosion Impact_14.wav-84115a3a1b11da664b578b1c5184defc.sample"
+
+[deps]
+
+source_file="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/EXPLDsgn_Explosion Impact_14.wav"
+dest_files=["res://.godot/imported/EXPLDsgn_Explosion Impact_14.wav-84115a3a1b11da664b578b1c5184defc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

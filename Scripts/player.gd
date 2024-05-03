@@ -6,8 +6,13 @@ extends CharacterBody2D
 @onready var ray_cast = $GridMovement/RayCast2D
 
 var health = 100
+var direction
  
 func _ready():
+	if SceneManager.temp_save_data.has("player"):
+		var data = SceneManager.temp_save_data["player"]
+		if data.has("direction_facing"):
+			animated_sprite.play("idle_" + data.direction_facing)
 	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
 	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
 	animated_sprite.play("idle_down")
@@ -18,9 +23,11 @@ func _input(event):
 		var collision = ray_cast.get_collider()
 		if collision != null:
 			if collision.name == "SavePoint":
-				Global.is_saving = true
-				Global.change_scene_with_transition("res://Scenes/load_game.tscn")
+				SceneManager.is_saving = true
+				SceneManager.change_scene_with_transition("res://Scenes/load_game.tscn")
 			elif collision.is_in_group("npc"):
+				$UI/DialogPopup.dialog_finished.connect(_on_dialog_finished)
+				$UI/DimBackground.visible = true
 				collision.dialog()
  
 func _process(_delta):
@@ -46,35 +53,37 @@ func moving_animation(input_direction: Vector2) -> void:
 	animated_sprite.play(animation_state)
  
 func vector2Direction(vec: Vector2) -> String:
-	var direction = "down"
-	if vec.y > 0: direction = "down"
-	elif vec.y < 0: direction = "up"
-	elif vec.x > 0:
+	direction = "down"
+	if vec.x > 0:
 		animated_sprite.flip_h = true
 		direction = "side" #facing right
 	elif vec.x < 0:
 		# Horizontal flip since we have one animation for both left and right walking and idle
 		animated_sprite.flip_h = false
 		direction = "side" #facing left
+	elif vec.y > 0: direction = "down"
+	elif vec.y < 0: direction = "up"
 		
 	return direction
 
 func data_to_save():
 	return {
 		"position": [position.x, position.y],
-		"health": health
+		"health": health,
+		"direction_facing": direction
 	}
 	
-func data_to_load(data):
-	position = Vector2(data.position[0], data.position[1])
-	load_to_new_area(data)
-	
-func load_to_new_area(data):
-	health = data.health - 10
+func data_to_load():
+	var data = SceneManager.temp_save_data["player"]
+	if data.has("position"):
+		position = Vector2(data.position[0], data.position[1])
 
 func _on_exit_area_body_entered(body):
-	Global.scene_changed.connect(_on_scene_changed)
+	SceneManager.scene_changed.connect(_on_scene_changed)
 
 #only after scene has been changed, do we free our resource     
 func _on_scene_changed():
 	queue_free()
+	
+func _on_dialog_finished():
+	$UI/DimBackground.visible = false

@@ -1,35 +1,76 @@
-[gd_scene load_steps=6 format=3 uid="uid://3xviq2qybfjk"]
+[gd_scene load_steps=9 format=3 uid="uid://3xviq2qybfjk"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_m7338"]
-[ext_resource type="FontFile" uid="uid://du6g0sw5tw25y" path="res://Assets/Fonts/PixeloidSans-Bold.ttf" id="2_j7k0h"]
-[ext_resource type="AudioStream" uid="uid://cfn7qpvpvs37c" path="res://Assets/Music/inside the mountain.wav" id="2_pnmwf"]
-[ext_resource type="FontFile" uid="uid://b6vb44cd4scl3" path="res://Assets/Fonts/PixeloidSans.ttf" id="3_2htlv"]
-[ext_resource type="AudioStream" uid="uid://b28tc6uho4ue0" path="res://Assets/SoundFX/button_not_mouse_sound.wav" id="5_777wf"]
+[ext_resource type="FontFile" uid="uid://7q0kouyp54oy" path="res://Assets/Borrowed/Fonts/salmon-typewriter-font/Salmon Typewriter fonts/Salmon Typewriter 9 Regular.ttf" id="2_hxggj"]
+[ext_resource type="Texture2D" uid="uid://dihr4jcrn1p6c" path="res://Assets/Borrowed/pixel-art-city-background.png" id="2_t0jld"]
+[ext_resource type="FontFile" uid="uid://db6xxvgm2e3fw" path="res://Assets/Borrowed/Fonts/salmon-typewriter-font/Salmon Typewriter fonts/Salmon Typewriter 9 Bold.ttf" id="2_t5frm"]
+[ext_resource type="AudioStream" uid="uid://bprbhfc4ia1pt" path="res://Assets/Borrowed/NinjaAdventure/Musics/22 - Dream.ogg" id="5_24nu8"]
+[ext_resource type="AudioStream" uid="uid://d0niemwdmtw6c" path="res://Assets/Borrowed/NinjaAdventure/Sounds/Menu/Menu1.wav" id="6_dtykf"]
+
+[sub_resource type="Animation" id="Animation_lub80"]
+resource_name = "slide_in"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(112, -50), Vector2(112, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/VBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(149, 400), Vector2(149, 160)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6yqt"]
+_data = {
+"slide_in": SubResource("Animation_lub80")
+}
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_m7338")
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 480.0
-offset_bottom = 360.0
-color = Color(0.666667, 0.282353, 0.317647, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(232, 160)
+scale = Vector2(0.318139, 0.450433)
+texture = ExtResource("2_t0jld")
 
-[node name="Title" type="Label" parent="Background"]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -16.0
+offset_right = 480.0
+offset_bottom = 344.0
+color = Color(0.027451, 0.164706, 0.262745, 0)
+
+[node name="Title" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -128.0
-offset_top = 64.0
+offset_top = -48.7934
 offset_right = 128.0
-offset_bottom = 112.0
+offset_bottom = -0.792358
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_j7k0h")
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.247059, 0.133333, 0.141176, 1)
+theme_override_fonts/font = ExtResource("2_t5frm")
+theme_override_font_sizes/font_size = 20
 text = "PLATFORM CITY"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,64 +78,79 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -91.0
-offset_top = -60.0
+offset_top = 220.0
 offset_right = 91.0
-offset_bottom = 92.0
+offset_bottom = 378.006
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="NewGame" type="Button" parent="Background/VBoxContainer/MarginContainer"]
+[node name="NewGame" type="Button" parent="ColorRect/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-theme_override_fonts/font = ExtResource("3_2htlv")
+theme_override_colors/font_color = Color(0.960784, 0.854902, 0.752941, 1)
+theme_override_fonts/font = ExtResource("2_hxggj")
 text = "New Game"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Background/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="LoadGame" type="Button" parent="Background/VBoxContainer/MarginContainer2"]
+[node name="LoadGame" type="Button" parent="ColorRect/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_fonts/font = ExtResource("3_2htlv")
+theme_override_colors/font_color = Color(0.960784, 0.854902, 0.752941, 1)
+theme_override_fonts/font = ExtResource("2_hxggj")
 text = "Load Game
 "
 
-[node name="MarginContainer3" type="MarginContainer" parent="Background/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="QuitGame" type="Button" parent="Background/VBoxContainer/MarginContainer3"]
+[node name="QuitGame" type="Button" parent="ColorRect/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_fonts/font = ExtResource("3_2htlv")
+theme_override_colors/font_color = Color(0.960784, 0.854902, 0.752941, 1)
+theme_override_fonts/font = ExtResource("2_hxggj")
 text = "Quit Game
 "
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_pnmwf")
+process_mode = 3
+stream = ExtResource("5_24nu8")
+volume_db = -10.0
 autoplay = true
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_777wf")
+stream = ExtResource("6_dtykf")
 
-[connection signal="focus_entered" from="Background/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_focus_entered"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="focus_entered" from="Background/VBoxContainer/MarginContainer2/LoadGame" to="." method="_on_load_game_focus_entered"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer2/LoadGame" to="." method="_on_load_game_pressed"]
-[connection signal="focus_entered" from="Background/VBoxContainer/MarginContainer3/QuitGame" to="." method="_on_quit_game_focus_entered"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer3/QuitGame" to="." method="_on_quit_game_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x6yqt")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+autostart = true
+
+[connection signal="focus_entered" from="ColorRect/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_focus_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="focus_entered" from="ColorRect/VBoxContainer/MarginContainer2/LoadGame" to="." method="_on_load_game_focus_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MarginContainer2/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="focus_entered" from="ColorRect/VBoxContainer/MarginContainer3/QuitGame" to="." method="_on_quit_game_focus_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MarginContainer3/QuitGame" to="." method="_on_quit_game_pressed"]

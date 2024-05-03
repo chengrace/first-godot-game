@@ -18,8 +18,8 @@ config/icon="res://Assets/logo.png"
 [autoload]
 
 Constants="*res://Global/constants.gd"
-Global="*res://Global/global.gd"
-SceneTransition="*res://Scenes/scene_transition.tscn"
+SceneManager="*res://Global/scene_manager.gd"
+SceneTransition="*res://Global/scene_transition.tscn"
 
 [display]
 

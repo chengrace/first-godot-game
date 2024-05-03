@@ -4,35 +4,35 @@ extends CanvasLayer
 
 @onready var animation_player = $AnimationPlayer
 @onready var color_transition = $DissolveRect
+@onready var circle_shader = $CircleShader
 
 signal anim_in_finished
 
-var in_transition_finished
+func _ready():
+	color_transition.modulate.a = 0
+	circle_shader.modulate.a = 0
+	color_transition.size = Vector2(480, 360)
+	circle_shader.size = Vector2(480, 360)
 
-func play_transition(anim_name, color):
-	if anim_name == "none":
+func play_transition(transition, color):
+	if transition == "none":
 		anim_in_finished.emit()
-		in_transition_finished = false
 	else:
-		if anim_name == "dissolve" :
-			color_transition.color = color
-			animation_player.play(anim_name)
-		elif anim_name == "wipe":
-			color_transition.color = color
-			animation_player.play("wipe_in")
-		in_transition_finished = true
+		circle_shader.color = color
+		color_transition.color = color
+		if transition == "dissolve" :
+			run_transition("dissolve", "dissolve", true)
+		elif transition == "wipe":
+			run_transition("wipe_in", "wipe_out")
+		elif transition == "intro":
+			run_transition("dissolve", "circle_open")
 
-func _on_animation_player_animation_finished(anim_name):
-	if in_transition_finished:
-		#print("First half of transition is done")
-		anim_in_finished.emit() 
-		if anim_name == "dissolve":
-			animation_player.play_backwards("dissolve")
-		elif anim_name == "wipe_in":
-			animation_player.play("wipe_out")
-		in_transition_finished = false
+func run_transition(anim1, anim2, backwards=false):
+	animation_player.play(anim1)
+	await animation_player.animation_finished
+	animation_player.play("RESET")
+	anim_in_finished.emit() # to change scene in global.gd
+	if backwards:
+		animation_player.play_backwards(anim2)
 	else:
-		#print("Second half of transition complete")
-		pass
-
-
+		animation_player.play(anim2)

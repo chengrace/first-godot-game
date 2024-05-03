@@ -41,8 +41,17 @@ func move(direction: Vector2) -> void:
 		
 		# Allow movement only if no collision in next tile or if the collider is just its own node:
 		var collision = $RayCast2D.get_collider()
+		
+		if collision != null and collision.is_in_group("stairs"):
+			moving_direction = movement + Vector2.UP
+			
+			var new_position = self_node.global_position + (moving_direction * Constants.TILE_SIZE)
+			
+			var tween = create_tween()
+			tween.tween_property(self_node, "position", new_position, speed).set_trans(Tween.TRANS_LINEAR)
+			tween.tween_callback(func(): moving_direction = Vector2.ZERO)
 
-		if collision == null or collision.is_in_group("player"):
+		elif collision == null or collision.is_in_group("player"):
 			moving_direction = movement
 			
 			var new_position = self_node.global_position + (moving_direction * Constants.TILE_SIZE)

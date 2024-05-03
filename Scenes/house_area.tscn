@@ -1,14 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://wimqq5xrrgox"]
+[gd_scene load_steps=17 format=3 uid="uid://wimqq5xrrgox"]
 
 [ext_resource type="Texture2D" uid="uid://bsxmh8h5veoqd" path="res://Assets/HouseLevel/grass and rock.png" id="1_1husp"]
 [ext_resource type="Script" path="res://Scripts/house_area.gd" id="1_n5et7"]
 [ext_resource type="Texture2D" uid="uid://db5yopqg12ek7" path="res://Assets/HouseLevel/house1trial.png" id="2_ss2vs"]
 [ext_resource type="Script" path="res://Scripts/follow_cam.gd" id="3_y4fk6"]
-[ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/player.tscn" id="4_navqn"]
-[ext_resource type="PackedScene" uid="uid://ds4apf8k0rus7" path="res://Scenes/enemy.tscn" id="5_vpjqb"]
+[ext_resource type="PackedScene" uid="uid://b1dyy2x8h05f5" path="res://Scenes/Characters/player.tscn" id="4_navqn"]
+[ext_resource type="PackedScene" uid="uid://ds4apf8k0rus7" path="res://Scenes/Characters/enemy.tscn" id="5_vpjqb"]
 [ext_resource type="PackedScene" uid="uid://dqti668w3tj0f" path="res://Scenes/save_point.tscn" id="7_37b5s"]
 [ext_resource type="AudioStream" uid="uid://fpw0qtl5wxye" path="res://Assets/Music/the natives.wav" id="8_pfp0d"]
-[ext_resource type="PackedScene" uid="uid://ufr156sp7ytg" path="res://Scenes/npc.tscn" id="9_hm53p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xspkg"]
 texture = ExtResource("1_1husp")
@@ -117,10 +116,15 @@ separation = Vector2i(2, 2)
 0:3/0/terrains_peering_bit/bottom_left_corner = 0
 0:3/0/terrains_peering_bit/left_side = 0
 0:3/0/terrains_peering_bit/top_left_corner = 0
+1:3/next_alternative_id = 2
 1:3/0 = 0
 1:3/0/terrain_set = 0
 1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/1 = 1
+1:3/1/modulate = Color(0.584314, 0.866667, 0.552941, 1)
+1:3/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/1/physics_layer_0/angular_velocity = 0.0
 2:3/0 = 0
 2:3/0/terrain_set = 0
 2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -290,8 +294,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok8qy"]
-size = Vector2(20, 26)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv0mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvya3"]
 size = Vector2(50, 18)
@@ -372,22 +375,23 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(280, 296)
 
 [node name="EnterHouse" type="Area2D" parent="."]
-position = Vector2(416, 184)
+position = Vector2(416, 192)
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterHouse"]
-position = Vector2(8, -3)
-shape = SubResource("RectangleShape2D_ok8qy")
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_jv0mu")
 
 [node name="ExitArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
-position = Vector2(456, 368)
+position = Vector2(456, 361)
 shape = SubResource("RectangleShape2D_kvya3")
 
-[node name="NPC" parent="." instance=ExtResource("9_hm53p")]
-position = Vector2(456, 240)
-
+[connection signal="body_entered" from="EnterHouse" to="." method="_on_enter_house_body_entered"]
+[connection signal="body_exited" from="EnterHouse" to="." method="_on_enter_house_body_exited"]
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="Player" method="_on_exit_area_body_entered"]

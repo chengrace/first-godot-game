@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buay10fwaigm5"
+path="res://.godot/imported/Tablet_Tap_07.wav-97953d31e0720b7b5343e3c8b3197539.sample"
+
+[deps]
+
+source_file="res://Assets/Borrowed/SoundFx/Shapeforms Audio Free Sound Effects/Type Preview/Tablet/Tablet_Tap_07.wav"
+dest_files=["res://.godot/imported/Tablet_Tap_07.wav-97953d31e0720b7b5343e3c8b3197539.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
