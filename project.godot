@@ -18,7 +18,7 @@ config/icon="res://Assets/logo.png"
 [autoload]
 
 Constants="*res://Global/constants.gd"
-Global="*res://Global/scene_manager.gd"
+SceneManager="*res://Global/scene_manager.gd"
 SceneTransition="*res://Global/scene_transition.tscn"
 
 [display]

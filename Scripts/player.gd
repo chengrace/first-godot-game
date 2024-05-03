@@ -17,9 +17,10 @@ func _input(event):
 		# Save game action
 		var collision = ray_cast.get_collider()
 		if collision != null:
+			print("collision: ",collision.name)
 			if collision.name == "SavePoint":
-				Global.is_saving = true
-				Global.change_scene_with_transition("res://Scenes/load_game.tscn")
+				SceneManager.is_saving = true
+				SceneManager.change_scene_with_transition("res://Scenes/load_game.tscn")
 			elif collision.is_in_group("npc"):
 				$UI/DialogPopup.dialog_finished.connect(_on_dialog_finished)
 				$UI/DimBackground.visible = true
@@ -67,15 +68,14 @@ func data_to_save():
 		"health": health
 	}
 	
-func data_to_load(data):
-	position = Vector2(data.position[0], data.position[1])
-	load_to_new_area(data)
-	
-func load_to_new_area(data):
-	health = data.health - 10
+func data_to_load():
+	var data = SceneManager.temp_save_data["player"]
+	if data.has("position"):
+		position = Vector2(data.position[0], data.position[1])
+		print("in data to load function: ", position)
 
 func _on_exit_area_body_entered(body):
-	Global.scene_changed.connect(_on_scene_changed)
+	SceneManager.scene_changed.connect(_on_scene_changed)
 
 #only after scene has been changed, do we free our resource     
 func _on_scene_changed():
