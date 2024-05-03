@@ -388,9 +388,10 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
-position = Vector2(456, 368)
+position = Vector2(456, 361)
 shape = SubResource("RectangleShape2D_kvya3")
 
 [connection signal="body_entered" from="EnterHouse" to="." method="_on_enter_house_body_entered"]
+[connection signal="body_exited" from="EnterHouse" to="." method="_on_enter_house_body_exited"]
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="Player" method="_on_exit_area_body_entered"]

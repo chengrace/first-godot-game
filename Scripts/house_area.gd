@@ -21,6 +21,7 @@ func _input(event):
 	if Input.is_action_pressed("ui_action"):
 		if new_area_path != "":
 			SceneManager.change_scene_with_transition(new_area_path)
+			new_area_path = ""
 
 # Changes to different area, doesn't require player input
 func _on_exit_area_body_entered(body):
@@ -31,7 +32,13 @@ func _on_exit_area_body_entered(body):
 func _on_enter_house_body_entered(body):
 	if body.is_in_group("player"):
 		new_area_path = "res://Scenes/apartment_area.tscn"
-	
+
+func _on_enter_house_body_exited(body):
+	if body.is_in_group("player"):
+			new_area_path = ""
+
 #only after scene has been changed, do we free our resource     
 func _on_scene_changed():
 	queue_free()
+
+

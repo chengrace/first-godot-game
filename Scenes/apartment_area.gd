@@ -21,6 +21,7 @@ func _input(event):
 	if Input.is_action_pressed("ui_action"):
 		if new_area_path != "":
 			SceneManager.change_scene_with_transition(new_area_path)
+			new_area_path = ""
 #
 func _on_exit_house_body_entered(body):
 	if body.is_in_group("player"):

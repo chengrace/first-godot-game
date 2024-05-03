@@ -69,7 +69,6 @@ func change_scene(next_scene_path):
 	update_player_data() # saves player data between scenes
 	# Free it for the next scene
 	current_scene.queue_free()
-	#print("freed scene")
 	# Change the scene
 	var next_scene = load(next_scene_path).instantiate()
 	get_tree().get_root().call_deferred("add_child", next_scene) 

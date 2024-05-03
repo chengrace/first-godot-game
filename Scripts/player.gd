@@ -17,7 +17,6 @@ func _input(event):
 		# Save game action
 		var collision = ray_cast.get_collider()
 		if collision != null:
-			print("collision: ",collision.name)
 			if collision.name == "SavePoint":
 				SceneManager.is_saving = true
 				SceneManager.change_scene_with_transition("res://Scenes/load_game.tscn")
@@ -72,7 +71,6 @@ func data_to_load():
 	var data = SceneManager.temp_save_data["player"]
 	if data.has("position"):
 		position = Vector2(data.position[0], data.position[1])
-		print("in data to load function: ", position)
 
 func _on_exit_area_body_entered(body):
 	SceneManager.scene_changed.connect(_on_scene_changed)
