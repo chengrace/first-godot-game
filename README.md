@@ -9,7 +9,7 @@
 4. Set up Enemy + pathing ✔ 
 5. Set up turn-based combat 
 6. Set up basic Title Screen ✔ 
-7. Set up basic interface + functionality for Main Menu
+7. Set up basic interface + functionality for Main Menu ✔
 8. Saving and Loading functionality ✔ 
 9. Music and Sound FX ✔ 
 10. Include animation frames and scene transitions ✔ 
