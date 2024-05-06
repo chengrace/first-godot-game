@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://4fgwquoy1mwt"]
 
-[ext_resource type="Script" path="res://GUI/DialoguePopup.gd" id="1_f1c6r"]
+[ext_resource type="Script" path="res://GUI/dialog_popup.gd" id="1_f1c6r"]
 [ext_resource type="Texture2D" uid="uid://cpphigqfeb42r" path="res://Assets/Borrowed/NinjaAdventure/HUD/Dialog/DialogueBoxSimple.png" id="2_g4ffo"]
 [ext_resource type="Texture2D" uid="uid://cm1wmr38sdjr7" path="res://Assets/Borrowed/NinjaAdventure/HUD/Dialog/FacesetBox.png" id="3_cnyji"]
 [ext_resource type="FontFile" uid="uid://q411ts3sa2ao" path="res://Assets/Borrowed/Fonts/monogram/ttf/monogram.ttf" id="4_lnsxi"]

@@ -12,6 +12,7 @@ var next_scene_path
 var loading = false
 var is_saving = false # toggles whether load_game.tscn screen is for saving or loading game
 var temp_save_data = {}
+var is_paused = false
 
 func _ready():
 	SceneTransition.anim_in_finished.connect(_on_anim_in_finished)

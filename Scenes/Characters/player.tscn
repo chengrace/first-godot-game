@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://b1dyy2x8h05f5"]
+[gd_scene load_steps=29 format=3 uid="uid://b1dyy2x8h05f5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1rw8y"]
 [ext_resource type="Texture2D" uid="uid://grudbxksw8de" path="res://Assets/Player/sprite_with_idle.png" id="1_orjdi"]
 [ext_resource type="PackedScene" uid="uid://cud0a4ks7d7di" path="res://Scenes/Characters/grid_movement.tscn" id="3_7lacg"]
 [ext_resource type="PackedScene" uid="uid://4fgwquoy1mwt" path="res://GUI/dialog_popup.tscn" id="4_h58bl"]
+[ext_resource type="PackedScene" uid="uid://buct6l35s2wg4" path="res://GUI/PauseMenu.tscn" id="5_bjlw3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy4s"]
 radius = 8.0
@@ -220,4 +221,8 @@ color = Color(0.25098, 0.25098, 0.25098, 0.396078)
 
 [node name="DialogPopup" parent="UI" instance=ExtResource("4_h58bl")]
 layer = 2
+visible = false
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("5_bjlw3")]
+layer = 3
 visible = false

@@ -16,6 +16,9 @@ func _ready():
 	position = position.snapped(Vector2.ONE * Constants.TILE_SIZE)
 	position -= Vector2.ONE * (Constants.TILE_SIZE / 2)
 	animated_sprite.play("idle_down")
+	$UI/DialogPopup.visible = false
+	$UI/PauseMenu.visible = false
+	$UI/PauseMenu.resumed.connect(_on_resume)
 	
 func _input(event):
 	if event.is_action_pressed("ui_action"):
@@ -29,7 +32,19 @@ func _input(event):
 				$UI/DialogPopup.dialog_finished.connect(_on_dialog_finished)
 				$UI/DimBackground.visible = true
 				collision.dialog()
- 
+	elif event.is_action_pressed("escape"):
+		if SceneManager.is_paused == false:
+			$UI/DimBackground.visible = true
+			$UI/PauseMenu.visible = true
+			get_tree().paused = true
+			SceneManager.is_paused = true
+			$UI/PauseMenu.on_open()
+
+func _on_resume():
+	$UI/DimBackground.visible = false
+	$UI/PauseMenu.visible = false
+	get_tree().paused = false
+		
 func _process(_delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	$GridMovement.move(input_direction)

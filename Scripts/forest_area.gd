@@ -6,7 +6,7 @@ func _ready():
 	$BGM.play()
 	if SceneManager.temp_save_data.has("scene_filename"):
 		if SceneManager.temp_save_data["scene_filename"] == "house_area.tscn":
-			$Player.position = Vector2(80,60)
+			$Player.position = Vector2(80,80)
 		elif SceneManager.temp_save_data["scene_filename"] == "load_game.tscn":
 			$Player.data_to_load()
 	else:
