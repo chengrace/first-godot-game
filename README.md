@@ -12,4 +12,6 @@
 7. Set up basic interface + functionality for Main Menu ✔
 8. Saving and Loading functionality ✔ 
 9. Music and Sound FX ✔ 
-10. Include animation frames and scene transitions ✔ 
+10. Include animation frames and scene transitions ✔
+
+##### Completed on May 6, 2024
