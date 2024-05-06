@@ -13,7 +13,7 @@ func on_open():
 	$Resume.grab_focus()
 
 func _on_main_menu_pressed():
-	SceneManager.change_scene("res://Scenes/main.tscn")
+	SceneManager.change_scene_with_transition("res://Scenes/main.tscn")
 
 func _on_resume_pressed():
 	SceneManager.is_paused = false
